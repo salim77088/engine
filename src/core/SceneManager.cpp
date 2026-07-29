@@ -61,9 +61,10 @@ void Scene::DestroyAllEntities() {
 }
 
 void Scene::ForEachEntity(std::function<void(EntityID)> fn) {
-    // Capture fn by reference and call it for each entity
-    auto handler = [&fn](auto entity) { fn(static_cast<EntityID>(entity)); };
-    m_Registry.each(handler);
+    // EnTT v3.13+ uses storage<entt::entity>().each() to iterate
+    m_Registry.storage<entt::entity>().each([&fn](auto entity) {
+        fn(static_cast<EntityID>(entity));
+    });
 }
 
 bool Scene::Save(const std::string& path) {
