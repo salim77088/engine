@@ -1,0 +1,56 @@
+name: Auto-Fix Build Failures
+
+on:
+  workflow_run:
+    workflows: ["Build Luminus Engine"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  autofix:
+    name: Analyze & Fix Build Failure
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' || github.event_name == 'workflow_dispatch' }}
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install --quiet requests
+
+      - name: Run autofix
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python tools/autofix.py --repo ${{ github.repository }} \
+                                  --run-id ${{ github.event.workflow_run.id || github.run_id }} \
+                                  --token "$GH_TOKEN" \
+                                  --max-iterations 1
+
+      - name: Push fix if any changes
+        if: success()
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name  "Luminus AutoFix Bot"
+            git config user.email "autofix@luminus.local"
+            git add -A
+            git commit -m "fix: auto-patched build failure [skip ci]"
+            git push
+            echo "Pushed auto-fix"
+          else
+            echo "No automatic fix could be applied"
+          fi
