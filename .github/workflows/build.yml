@@ -2,9 +2,9 @@ name: Build Luminus Engine
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -15,85 +15,59 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-
+    
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 1
-
+      
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v2
         with:
-          cmake-version: '3.22.x'
-
+          cmake-version: '3.22.6'
+      
       - name: Setup MSVC (Windows)
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
-
-      - name: Install Linux dependencies
+      
+      - name: Install Linux deps
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev \
-            libxi-dev libgl1-mesa-dev libasound2-dev libgtk-3-dev libfontconfig1-dev \
-            libglib2.0-dev libpulse-dev pkg-config
-
+          sudo apt-get update
+          sudo apt-get install -y \
+            libasound2-dev libx11-dev libxrandr-dev libxinerama-dev \
+            libxcursor-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev \
+            libwayland-dev libxkbcommon-dev
+      
       - name: Configure (CMake)
-        shell: bash
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
-
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+      
       - name: Build
-        shell: bash
-        run: cmake --build build --config Release --parallel 2
-
-      - name: List output
-        shell: bash
-        run: |
-          echo "=== Build output ==="
-          find build -name 'luminus*' -type f 2>/dev/null | head -20
-
-      - name: Package artifacts (Unix)
+        run: cmake --build build --config Release --parallel 4
+      
+      - name: Package artifacts (Linux/macOS)
         if: runner.os != 'Windows'
-        shell: bash
         run: |
-          mkdir -p staging
-          BIN=$(find build -name 'luminus' -type f | head -1)
-          if [ -n "$BIN" ]; then cp "$BIN" staging/; fi
-          cp -r assets staging/ 2>/dev/null || true
-          cp -r examples staging/ 2>/dev/null || true
-          cp README.md staging/ 2>/dev/null || true
-          cd staging && tar -czf ../luminus-${{ runner.os }}.tar.gz * && cd ..
-          ls -la luminus-*.tar.gz
-
+          mkdir -p artifact
+          cp build/bin/luminus artifact/
+          cp -r assets examples artifact/ 2>/dev/null || true
+          cd artifact && tar czf ../luminus-${{ runner.os }}.tar.gz *
+      
       - name: Package artifacts (Windows)
         if: runner.os == 'Windows'
-        shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path staging | Out-Null
-          $bin = Get-ChildItem -Path build -Recurse -Filter "luminus.exe" | Select-Object -First 1
-          if ($bin) { Copy-Item $bin.FullName -Destination staging/ }
-          if (Test-Path assets)   { Copy-Item assets   -Destination staging/ -Recurse }
-          if (Test-Path examples) { Copy-Item examples -Destination staging/ -Recurse }
-          if (Test-Path README.md){ Copy-Item README.md -Destination staging/ }
-          Compress-Archive -Path staging/* -DestinationPath luminus-Windows.zip -Force
-          Get-ChildItem luminus-Windows.zip
-
-      - name: Upload artifact (Unix)
-        if: runner.os != 'Windows'
+          mkdir artifact
+          copy build\bin\Release\luminus.exe artifact\
+          xcopy /E /I assets artifact\assets 2>nul || true
+          xcopy /E /I examples artifact\examples 2>nul || true
+          cd artifact && 7z a ..\luminus-Windows.zip *
+      
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: luminus-${{ runner.os }}
-          path: luminus-${{ runner.os }}.tar.gz
-          retention-days: 30
-
-      - name: Upload artifact (Windows)
-        if: runner.os == 'Windows'
-        uses: actions/upload-artifact@v4
-        with:
-          name: luminus-${{ runner.os }}
-          path: luminus-Windows.zip
+          path: |
+            luminus-*.tar.gz
+            luminus-*.zip
           retention-days: 30

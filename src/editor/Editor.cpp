@@ -1,219 +1,165 @@
+// editor/Editor.cpp
 #include "Editor.h"
+#include "HierarchyPanel.h"
+#include "InspectorPanel.h"
+#include "ConsolePanel.h"
+#include "AssetBrowserPanel.h"
 #include "../core/Engine.h"
 #include "../core/SceneManager.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include "../core/Time.h"
+#include "../utils/Logger.h"
 #include <cstdio>
-#include <cstdarg>
 
 namespace luminus {
 
-Editor& Editor::Instance() { static Editor i; return i; }
+Editor::Editor() {}
+Editor::~Editor() {}
 
 bool Editor::Init() {
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    io.IniFilename = "luminus_editor.ini";
-    ImGui::StyleColorsDark();
-
-    // Apply Luminus branding to the theme
-    ImGuiStyle& style = ImGui::GetStyle();
-    style.Colors[ImGuiCol_WindowBg]       = ImVec4(0.10f, 0.10f, 0.13f, 1.0f);
-    style.Colors[ImGuiCol_TitleBg]        = ImVec4(0.18f, 0.20f, 0.28f, 1.0f);
-    style.Colors[ImGuiCol_TitleBgActive]  = ImVec4(0.25f, 0.30f, 0.45f, 1.0f);
-    style.Colors[ImGuiCol_Button]         = ImVec4(0.22f, 0.30f, 0.50f, 1.0f);
-    style.Colors[ImGuiCol_ButtonHovered]  = ImVec4(0.35f, 0.45f, 0.65f, 1.0f);
-    style.Colors[ImGuiCol_ButtonActive]   = ImVec4(0.45f, 0.55f, 0.75f, 1.0f);
-    style.Colors[ImGuiCol_Header]         = ImVec4(0.20f, 0.25f, 0.40f, 1.0f);
-    style.Colors[ImGuiCol_HeaderHovered]  = ImVec4(0.30f, 0.40f, 0.60f, 1.0f);
-    style.Colors[ImGuiCol_FrameBg]        = ImVec4(0.15f, 0.15f, 0.18f, 1.0f);
-
+    GuiSetStyle(DEFAULT, TEXT_SIZE, 14);
+    GuiSetStyle(DEFAULT, BACKGROUND_COLOR, 0x1e1e22FF);
+    GuiSetStyle(DEFAULT, BASE_COLOR_NORMAL, 0x2d2d35FF);
+    GuiSetStyle(DEFAULT, BASE_COLOR_FOCUSED, 0x3d3d47FF);
+    GuiSetStyle(DEFAULT, BASE_COLOR_PRESSED, 0x4d4d57FF);
+    GuiSetStyle(DEFAULT, TEXT_COLOR_NORMAL, 0xE0E0E0FF);
+    GuiSetStyle(DEFAULT, TEXT_COLOR_FOCUSED, 0xFFFFFFFF);
+    GuiSetStyle(DEFAULT, BORDER_COLOR_NORMAL, 0x424247FF);
+    GuiSetStyle(DEFAULT, LINE_COLOR, 0x3d3d47FF);
+    
+    m_Hierarchy = std::make_unique<HierarchyPanel>();
+    m_Inspector = std::make_unique<InspectorPanel>();
+    m_Console = std::make_unique<ConsolePanel>();
+    m_AssetBrowser = std::make_unique<AssetBrowserPanel>();
+    
+    m_Hierarchy->Init();
+    m_Inspector->Init();
+    m_Console->Init();
+    m_AssetBrowser->Init();
+    
+    UpdateLayout();
+    
+    m_Initialized = true;
+    LM_INFO("Editor", "Editor initialized (raygui 4.0)");
     return true;
 }
 
 void Editor::Shutdown() {
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
+    if (!m_Initialized) return;
+    m_Hierarchy.reset();
+    m_Inspector.reset();
+    m_Console.reset();
+    m_AssetBrowser.reset();
+    m_Initialized = false;
+    LM_INFO("Editor", "Editor shutdown");
 }
 
-void Editor::LogToConsole(const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    char buf[1024];
-    vsnprintf(buf, sizeof(buf), fmt, args);
-    va_end(args);
-    if (consoleLen_ + (int)strlen(buf) + 2 < (int)sizeof(consoleBuffer_)) {
-        strcat(consoleBuffer_, buf);
-        strcat(consoleBuffer_, "\n");
-        consoleLen_ += strlen(buf) + 1;
-    }
+void Editor::UpdateLayout() {
+    int w = GetScreenWidth();
+    int h = GetScreenHeight();
+    
+    m_MenuRect = {0, 0, (float)w, 24};
+    m_ToolBarRect = {0, 24, (float)w, 32};
+    m_StatusBarRect = {0, (float)h - 20, (float)w, 20};
+    
+    float panelWidth = 250;
+    m_HierarchyRect = {0, 56, panelWidth, (float)h - 56 - 200 - 20};
+    m_InspectorRect = {(float)w - panelWidth, 56, panelWidth, (float)h - 56 - 200 - 20};
+    m_ConsoleRect = {panelWidth, (float)h - 200 - 20, (float)w - 2*panelWidth, 200};
+    m_AssetBrowserRect = {0, (float)h - 200 - 20, panelWidth, 200};
+    m_ViewportRect = {panelWidth + 4, 56, (float)w - 2*panelWidth - 8, (float)h - 56 - 200 - 24};
+}
+
+void Editor::Update() {
+    if (!m_Initialized) return;
+    UpdateLayout();
+    
+    m_Hierarchy->Update();
+    m_Inspector->Update();
+    m_Console->Update();
+    m_AssetBrowser->Update();
 }
 
 void Editor::Render() {
-    if (!visible_) return;
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-
-    RenderMainMenuBar();
-    RenderToolbar();
-    if (showOutliner_)  RenderOutliner();
-    if (showInspector_) RenderInspector();
-    if (showConsole_)   RenderConsole();
-    if (showAssets_)    RenderAssetBrowser();
-
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    if (!m_Initialized) return;
+    
+    RenderMainMenu();
+    RenderToolBar();
+    RenderViewport();
+    m_Hierarchy->Render(m_HierarchyRect, m_SelectedEntity);
+    m_Inspector->Render(m_InspectorRect, m_SelectedEntity);
+    m_Console->Render(m_ConsoleRect);
+    m_AssetBrowser->Render(m_AssetBrowserRect);
+    RenderStatusBar();
 }
 
-void Editor::RenderMainMenuBar() {
-    if (ImGui::BeginMainMenuBar()) {
-        if (ImGui::BeginMenu("File")) {
-            if (ImGui::MenuItem("New Scene"))   {}
-            if (ImGui::MenuItem("Open Scene...")){}
-            if (ImGui::MenuItem("Save Scene"))  {
-                Engine::Instance().Scenes().SaveToFile(Engine::Instance().Scenes().GetCurrentName() + ".json");
-            }
-            if (ImGui::MenuItem("Exit", "Esc")) Engine::Instance().Quit();
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("View")) {
-            ImGui::MenuItem("Outliner",  nullptr, &showOutliner_);
-            ImGui::MenuItem("Inspector", nullptr, &showInspector_);
-            ImGui::MenuItem("Console",   nullptr, &showConsole_);
-            ImGui::MenuItem("Assets",    nullptr, &showAssets_);
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Help")) {
-            ImGui::TextDisabled("Luminus Engine v1.0.0");
-            ImGui::TextDisabled("Built on Cocos2d-x v4 (MIT)");
-            ImGui::EndMenu();
-        }
-        ImGui::EndMainMenuBar();
+void Editor::RenderMainMenu() {
+    if (GuiMenuBar(m_MenuRect)) {
+        // Handle menu events via state if needed
     }
 }
 
-void Editor::RenderToolbar() {
-    ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove;
-    ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetFrameHeight()));
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, 40));
-    if (ImGui::Begin("##Toolbar", nullptr, flags)) {
-        if (ImGui::Button("Play"))      LogToConsole("[Editor] Play pressed");
-        if (ImGui::Button("Pause"))     LogToConsole("[Editor] Pause pressed");
-        if (ImGui::Button("Stop"))      LogToConsole("[Editor] Stop pressed");
-        ImGui::SameLine();
-        if (ImGui::Button("Add Sprite")) {
-            Entity e;
-            e.name = "sprite_" + std::to_string(Engine::Instance().Scenes().GetCurrent().entities.size() + 1);
-            e.x = Engine::Instance().GetConfig().width / 2;
-            e.y = Engine::Instance().GetConfig().height / 2;
-            Engine::Instance().Scenes().AddEntity(e);
-        }
-        if (ImGui::Button("Add Text"))  {
-            Entity e;
-            e.name = "text_" + std::to_string(Engine::Instance().Scenes().GetCurrent().entities.size() + 1);
-            e.type = "text";
-            e.text = "Hello Luminus";
-            e.x = Engine::Instance().GetConfig().width / 2 - 80;
-            e.y = Engine::Instance().GetConfig().height / 2;
-            Engine::Instance().Scenes().AddEntity(e);
-        }
-        if (ImGui::Button("Save")) {
-            Engine::Instance().Scenes().SaveToFile("examples/edited.scene.json");
-            LogToConsole("[Editor] Scene saved");
+void Editor::RenderToolBar() {
+    DrawRectangleRec(m_ToolBarRect, Color{40, 40, 48, 255});
+    DrawLine(m_ToolBarRect.x, m_ToolBarRect.y + m_ToolBarRect.height, 
+             m_ToolBarRect.x + m_ToolBarRect.width, m_ToolBarRect.y + m_ToolBarRect.height, 
+             Color{60, 60, 68, 255});
+    
+    // Play/Stop button
+    Rectangle playBtn = {10, 28, 80, 24};
+    const char* playLabel = m_Playing ? "Stop" : "Play";
+    if (GuiButton(playBtn, playLabel)) {
+        TogglePlayMode();
+    }
+    
+    // Save scene
+    Rectangle saveBtn = {100, 28, 80, 24};
+    if (GuiButton(saveBtn, "Save")) {
+        Scene* s = SceneManager::Get().GetActive();
+        if (s) {
+            s->Save("examples/untitled.scene.json");
         }
     }
-    ImGui::End();
-}
-
-void Editor::RenderOutliner() {
-    ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetFrameHeight() + 40), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(280, ImGui::GetIO().DisplaySize.y - 100), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Outliner", &showOutliner_)) {
-        auto& scene = Engine::Instance().Scenes().GetCurrent();
-        ImGui::Text("Scene: %s", Engine::Instance().Scenes().GetCurrentName().c_str());
-        ImGui::Separator();
-        for (size_t i = 0; i < scene.entities.size(); i++) {
-            const auto& e = scene.entities[i];
-            char label[256];
-            snprintf(label, sizeof(label), "%s [%s]###%d", e.name.c_str(), e.type.c_str(), (int)i);
-            if (ImGui::Selectable(label, selected_ == (int)i)) {
-                selected_ = (int)i;
-            }
+    
+    // Load scene
+    Rectangle loadBtn = {190, 28, 80, 24};
+    if (GuiButton(loadBtn, "Load")) {
+        Scene* s = SceneManager::Get().GetActive();
+        if (s) {
+            s->Load("examples/demo.scene.json");
         }
     }
-    ImGui::End();
-}
-
-void Editor::RenderInspector() {
-    ImGui::SetNextWindowPos(ImVec2(ImGui::GetIO().DisplaySize.x - 320, ImGui::GetFrameHeight() + 40), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(320, ImGui::GetIO().DisplaySize.y - 100), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Inspector", &showInspector_)) {
-        if (selected_ < 0 || selected_ >= (int)Engine::Instance().Scenes().GetCurrent().entities.size()) {
-            ImGui::TextDisabled("Select an entity to inspect");
-            ImGui::End();
-            return;
-        }
-        Entity& e = Engine::Instance().Scenes().GetCurrent().entities[selected_];
-        char nameBuf[128];
-        snprintf(nameBuf, sizeof(nameBuf), "%s", e.name.c_str());
-        ImGui::InputText("Name", nameBuf, sizeof(nameBuf));
-        e.name = nameBuf;
-        ImGui::Text("Type: %s", e.type.c_str());
-        ImGui::Separator();
-        ImGui::DragFloat("X", &e.x, 1.0f);
-        ImGui::DragFloat("Y", &e.y, 1.0f);
-        ImGui::DragFloat("Z", &e.z, 1.0f);
-        ImGui::DragFloat("Width",  &e.width,  1.0f);
-        ImGui::DragFloat("Height", &e.height, 1.0f);
-        ImGui::DragFloat("Rotation", &e.rotation, 1.0f, 0.0f, 360.0f);
-        ImGui::DragFloat("Scale",    &e.scale, 0.01f, 0.1f, 10.0f);
-        ImGui::SliderFloat("Opacity", &e.opacity, 0.0f, 1.0f);
-        ImGui::Checkbox("Visible", &e.visible);
-        ImGui::Separator();
-        if (e.type == "text") {
-            char txt[512];
-            snprintf(txt, sizeof(txt), "%s", e.text.c_str());
-            ImGui::InputTextMultiline("Text", txt, sizeof(txt), ImVec2(-1, 80));
-            e.text = txt;
-            ImGui::DragInt("Font Size", &e.fontSize, 1, 8, 256);
-        }
-        char colorBuf[32];
-        snprintf(colorBuf, sizeof(colorBuf), "%s", e.color.c_str());
-        ImGui::InputText("Color", colorBuf, sizeof(colorBuf));
-        e.color = colorBuf;
-        ImGui::Separator();
-        if (ImGui::Button("Delete Entity")) {
-            Engine::Instance().Scenes().RemoveEntity(e.name);
-            selected_ = -1;
-        }
+    
+    // Stats toggle
+    Rectangle statsBtn = {280, 28, 80, 24};
+    if (GuiButton(statsBtn, "Stats")) {
+        m_ShowStats = !m_ShowStats;
     }
-    ImGui::End();
+    
+    // Engine name
+    DrawText("Luminus Engine v2.0", (int)m_ToolBarRect.width - 180, 34, 16, Color{180, 180, 200, 255});
 }
 
-void Editor::RenderConsole() {
-    ImGui::SetNextWindowPos(ImVec2(280, ImGui::GetIO().DisplaySize.y - 200), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x - 600, 200), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Console", &showConsole_)) {
-        if (ImGui::Button("Clear")) { consoleBuffer_[0] = 0; consoleLen_ = 0; }
-        ImGui::SameLine();
-        ImGui::TextDisabled("(%d bytes)", consoleLen_);
-        ImGui::Separator();
-        ImGui::BeginChild("console_scroll");
-        ImGui::TextUnformatted(consoleBuffer_);
-        if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY()) ImGui::SetScrollHereY(1.0f);
-        ImGui::EndChild();
-    }
-    ImGui::End();
+void Editor::RenderViewport() {
+    // The viewport is just an outline - actual rendering is the scene
+    DrawRectangleLinesEx(m_ViewportRect, 1, Color{80, 80, 90, 255});
 }
 
-void Editor::RenderAssetBrowser() {
-    if (!ImGui::Begin("Assets", &showAssets_)) { ImGui::End(); return; }
-    ImGui::TextDisabled("Asset browser (TODO)");
-    ImGui::End();
+void Editor::RenderStatusBar() {
+    DrawRectangleRec(m_StatusBarRect, Color{30, 30, 35, 255});
+    
+    char status[256];
+    snprintf(status, sizeof(status), "FPS: %d  |  Entities: %d  |  %s  |  Luminus Engine v2.0",
+        Time::FPS(),
+        SceneManager::Get().GetActive() ? (int)SceneManager::Get().GetActive()->GetEntityCount() : 0,
+        m_Playing ? "PLAYING" : "EDITING");
+    
+    DrawText(status, 10, (int)m_StatusBarRect.y + 4, 12, Color{180, 180, 180, 255});
+}
+
+void Editor::TogglePlayMode() {
+    m_Playing = !m_Playing;
+    Engine::Get().SetEditorMode(!m_Playing);
+    LM_INFO("Editor", "Mode: %s", m_Playing ? "PLAY" : "EDIT");
 }
 
 } // namespace luminus

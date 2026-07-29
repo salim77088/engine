@@ -1,5 +1,6 @@
+// audio/AudioSystem.h
 #pragma once
-#include "cocos2d.h"
+#include "raylib.h"
 #include <string>
 #include <unordered_map>
 
@@ -7,20 +8,26 @@ namespace luminus {
 
 class AudioSystem {
 public:
-    static AudioSystem& Instance();
     bool Init();
     void Shutdown();
-    bool LoadSound(const std::string& name, const std::string& path);
-    bool LoadMusic(const std::string& name, const std::string& path);
-    void PlaySound(const std::string& name);
-    void PlayMusic(const std::string& name, bool loop = true);
-    void StopMusic(const std::string& name);
-    void SetMasterVolume(float v);
     void Update();
+    
+    Sound LoadSound(const std::string& path);
+    Music LoadMusic(const std::string& path);
+    void PlaySound(const std::string& name);
+    void PlayMusic(const std::string& name);
+    void StopMusic(const std::string& name);
+    void SetMasterVolume(float vol);
+    float GetMasterVolume() const;
+    
+    void PauseAll();
+    void ResumeAll();
+
 private:
-    AudioSystem() = default;
-    std::unordered_map<std::string, unsigned int> sounds_;
-    std::unordered_map<std::string, cocos2d::AudioEngine::AudioID> music_;
+    std::unordered_map<std::string, Sound> m_Sounds;
+    std::unordered_map<std::string, Music> m_Music;
+    float m_MasterVolume = 1.0f;
+    bool m_Initialized = false;
 };
 
 } // namespace luminus

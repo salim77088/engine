@@ -1,78 +1,58 @@
 {
-  "name": "Luminus Demo Scene",
-  "background": "DARKGRAY",
-  "physics": false,
-  "gravity": 9.8,
+  "scene": "DemoScene",
   "entities": [
     {
+      "id": 0,
+      "name": "MainCamera",
+      "tag": "Camera",
+      "position": [0, 0, 0],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1],
+      "camera": {
+        "isPrimary": true,
+        "is2D": true,
+        "fov": 60.0
+      }
+    },
+    {
       "id": 1,
-      "name": "title",
-      "type": "text",
-      "text": "Welcome to Luminus Engine v1.0.0",
-      "x": 340,
-      "y": 80,
-      "fontSize": 32,
-      "color": "GOLD"
+      "name": "Player",
+      "tag": "Player",
+      "position": [400, 300, 0],
+      "rotation": [0, 0, 0],
+      "scale": [2, 2, 1],
+      "sprite": {
+        "texture": "",
+        "tint": [100, 200, 255, 255],
+        "order": 0
+      },
+      "script": "examples/demo.ls"
     },
     {
       "id": 2,
-      "name": "subtitle",
-      "type": "text",
-      "text": "Built on Cocos2d-x v4 | F1: Toggle Editor | ESC: Quit",
-      "x": 280,
-      "y": 130,
-      "fontSize": 16,
-      "color": "LIGHTGRAY"
+      "name": "Enemy1",
+      "tag": "Enemy",
+      "position": [600, 300, 0],
+      "rotation": [0, 0, 0],
+      "scale": [1.5, 1.5, 1],
+      "sprite": {
+        "texture": "",
+        "tint": [255, 100, 100, 255],
+        "order": 1
+      }
     },
     {
       "id": 3,
-      "name": "player",
-      "type": "sprite",
-      "x": 600,
-      "y": 350,
-      "w": 40,
-      "h": 40,
-      "color": "SKYBLUE"
-    },
-    {
-      "id": 4,
-      "name": "ground",
-      "type": "sprite",
-      "x": 0,
-      "y": 660,
-      "w": 1280,
-      "h": 60,
-      "color": "GREEN"
-    },
-    {
-      "id": 5,
-      "name": "obstacle1",
-      "type": "sprite",
-      "x": 300,
-      "y": 580,
-      "w": 80,
-      "h": 80,
-      "color": "RED"
-    },
-    {
-      "id": 6,
-      "name": "obstacle2",
-      "type": "sprite",
-      "x": 900,
-      "y": 580,
-      "w": 80,
-      "h": 80,
-      "color": "PURPLE"
-    },
-    {
-      "id": 7,
-      "name": "instructions",
-      "type": "text",
-      "text": "Use arrow keys to move | SPACE to jump",
-      "x": 460,
-      "y": 700,
-      "fontSize": 14,
-      "color": "DARKGRAY"
+      "name": "Ground",
+      "tag": "Static",
+      "position": [640, 600, 0],
+      "rotation": [0, 0, 0],
+      "scale": [20, 1, 1],
+      "sprite": {
+        "texture": "",
+        "tint": [80, 80, 80, 255],
+        "order": -1
+      }
     }
   ]
 }

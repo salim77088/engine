@@ -3,54 +3,72 @@ name: Auto-Fix Build Failures
 on:
   workflow_run:
     workflows: ["Build Luminus Engine"]
-    types: [completed]
-  workflow_dispatch:
+    types:
+      - completed
 
 permissions:
   contents: write
-  actions: read
+  actions: write
 
 jobs:
   autofix:
-    name: Analyze & Fix Build Failure
+    name: Analyze and Auto-Fix Build Errors
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' || github.event_name == 'workflow_dispatch' }}
-    timeout-minutes: 15
-
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
+      
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install deps
-        run: pip install --quiet requests
-
-      - name: Run autofix
+      
+      - name: Setup Git identity
+        run: |
+          git config user.name "Luminus Auto-Fix Bot"
+          git config user.email "autofix@luminus.engine"
+      
+      - name: Fetch failed run logs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python tools/autofix.py --repo ${{ github.repository }} \
-                                  --run-id ${{ github.event.workflow_run.id || github.run_id }} \
-                                  --token "$GH_TOKEN" \
-                                  --max-iterations 1
-
-      - name: Push fix if any changes
-        if: success()
+          RUN_ID=${{ github.event.workflow_run.id }}
+          echo "Failed run ID: $RUN_ID"
+          gh run view $RUN_ID --log-failed > failed_logs.txt 2>&1 || true
+          echo "=== Failed logs preview ==="
+          head -200 failed_logs.txt
+      
+      - name: Run autofix script
+        run: python tools/autofix.py failed_logs.txt
+      
+      - name: Check for changes
+        id: changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name  "Luminus AutoFix Bot"
-            git config user.email "autofix@luminus.local"
-            git add -A
-            git commit -m "fix: auto-patched build failure [skip ci]"
-            git push
-            echo "Pushed auto-fix"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git diff --stat
           else
-            echo "No automatic fix could be applied"
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No fixable errors found."
           fi
+      
+      - name: Commit and push fixes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git add -A
+          git commit -m "fix: auto-applied fixes for build errors (run ${{ github.event.workflow_run.id }})"
+          git push
+      
+      - name: Trigger rebuild
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Triggering new build..."
+          gh workflow run build.yml --ref main
+          echo "New build triggered."

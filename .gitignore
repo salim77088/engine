@@ -1,5 +1,7 @@
-# Build output
+# Build artifacts
 build/
+bin/
+obj/
 *.o
 *.obj
 *.exe
@@ -9,30 +11,28 @@ build/
 *.a
 *.lib
 
-# IDE
+# IDE files
 .vscode/
 .idea/
-*.swp
-.DS_Store
-Thumbs.db
+*.user
+*.suo
+*.sln.docstates
+.vs/
 
 # CMake
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 Makefile
-install_manifest.txt
-compile_commands.json
+*.cmake
 
-# Generated
-staging/
-*.tar.gz
-*.zip
+# Logs
+*.log
+luminus.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# FetchContent cache
 _deps/
-
-# Secrets
-.env
-*.token
-
-# Editor
-luminus_editor.ini

@@ -1,208 +1,588 @@
+// scripting/Parser.cpp
 #include "Parser.h"
-#include "Lexer.h"
 #include <sstream>
-#include <stdexcept>
 
-namespace luminus {
+namespace luminus::script {
 
-bool Parser::Parse(const std::string& source) {
-    tokens_ = Tokenize(source);
-    pos_ = 0;
-    ast_.clear();
-    startIdx_.clear();
-    updateIdx_.clear();
-    error_.clear();
-    try {
-        while (Peek().type != TokenType::End) {
-            const Token& t = Peek();
-            if (t.type == TokenType::Keyword) {
-                if (t.value == "when_start")  { ParseHandler(true);  continue; }
-                if (t.value == "when_update") { ParseHandler(false); continue; }
-                if (t.value == "when_key")    { ParseHandler(false); continue; }
-            }
-            // Otherwise treat as top-level statement
-            ASTNode n = ParseStatement();
-            ast_.push_back(n);
-        }
-    } catch (const std::exception& e) {
-        error_ = e.what();
-        return false;
-    }
+Parser::Parser(const std::vector<Token>& tokens) : m_Tokens(tokens) {}
+
+const Token& Parser::Peek(int offset) const {
+    size_t idx = m_Pos + offset;
+    if (idx >= m_Tokens.size()) return m_Tokens.back();
+    return m_Tokens[idx];
+}
+
+const Token& Parser::Advance() {
+    if (m_Pos < m_Tokens.size()) m_Pos++;
+    return m_Tokens[m_Pos - 1];
+}
+
+bool Parser::Check(TokenType type) const {
+    return Peek().type == type;
+}
+
+bool Parser::Match(TokenType type) {
+    if (!Check(type)) return false;
+    Advance();
     return true;
 }
 
-const Token& Parser::Peek() const {
-    return tokens_[std::min(pos_, tokens_.size()-1)];
-}
-
-const Token& Parser::Consume() {
-    return tokens_[std::min(pos_++, tokens_.size()-1)];
-}
-
-bool Parser::Match(TokenType t) {
-    return Peek().type == t;
-}
-
-bool Parser::MatchKw(const std::string& kw) {
-    return Peek().type == TokenType::Keyword && Peek().value == kw;
-}
-
-void Parser::Expect(TokenType t, const char* what) {
-    if (Peek().type != t) {
-        std::ostringstream ss;
-        ss << "Line " << Peek().line << ":" << Peek().col
-           << " expected " << what << " but got '" << Peek().value << "'";
-        throw std::runtime_error(ss.str());
+bool Parser::MatchAny(std::initializer_list<TokenType> types) {
+    for (auto t : types) {
+        if (Check(t)) { Advance(); return true; }
     }
-    Consume();
+    return false;
 }
 
-void Parser::ExpectKw(const std::string& kw) {
-    if (!MatchKw(kw)) {
-        std::ostringstream ss;
-        ss << "Line " << Peek().line << ":" << Peek().col
-           << " expected '" << kw << "' but got '" << Peek().value << "'";
-        throw std::runtime_error(ss.str());
+Token Parser::Consume(TokenType type, const std::string& msg) {
+    if (Check(type)) return Advance();
+    Error(msg, Peek().line);
+    return Peek();
+}
+
+void Parser::Error(const std::string& msg, int line) {
+    if (m_Error.empty()) {
+        std::ostringstream oss;
+        oss << "Parse error at line " << (line > 0 ? line : Peek().line) << ": " << msg;
+        m_Error = oss.str();
     }
-    Consume();
 }
 
-void Parser::ParseHandler(bool isStart) {
-    Consume(); // handler name
-    if (isStart) {
-        Expect(TokenType::Brace, "'{'");
-        while (Peek().type != TokenType::Brace || Peek().value != "}") {
-            if (Peek().type == TokenType::End) throw std::runtime_error("Unclosed when_start block");
-            ast_.push_back(ParseStatement());
-            startIdx_.push_back(ast_.size() - 1);
+std::vector<StmtPtr> Parser::Parse() {
+    std::vector<StmtPtr> statements;
+    while (!Check(TokenType::EndOfFile) && !HasError()) {
+        statements.push_back(ParseStatement());
+    }
+    return statements;
+}
+
+StmtPtr Parser::ParseStatement() {
+    if (HasError()) return nullptr;
+    
+    if (Match(TokenType::Var)) return ParseVarDecl(false);
+    if (Match(TokenType::Const)) return ParseVarDecl(true);
+    if (Match(TokenType::Fun)) return ParseFunDecl();
+    if (Match(TokenType::If)) return ParseIf();
+    if (Match(TokenType::While)) return ParseWhile();
+    if (Match(TokenType::For)) return ParseFor();
+    if (Match(TokenType::Return)) return ParseReturn();
+    if (Match(TokenType::Print)) return ParsePrint();
+    if (Match(TokenType::Spawn)) return ParseSpawn();
+    if (Match(TokenType::Destroy)) return ParseDestroy();
+    if (Match(TokenType::On)) return ParseOnEvent();
+    if (Match(TokenType::Emit)) return ParseEmitEvent();
+    if (Match(TokenType::Contract)) return ParseContract();
+    if (Match(TokenType::Verify)) return ParseVerify();
+    if (Match(TokenType::Component)) return ParseComponentDecl();
+    if (Match(TokenType::Break)) {
+        Advance();
+        Consume(TokenType::Semicolon, "Expected ';' after break");
+        auto s = std::make_shared<Stmt>();
+        s->type = StmtType::Break;
+        return s;
+    }
+    if (Match(TokenType::Continue)) {
+        Advance();
+        Consume(TokenType::Semicolon, "Expected ';' after continue");
+        auto s = std::make_shared<Stmt>();
+        s->type = StmtType::Continue;
+        return s;
+    }
+    if (Match(TokenType::LeftBrace)) return ParseBlock();
+    
+    // Expression statement
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::ExprStmt;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after expression");
+    return s;
+}
+
+StmtPtr Parser::ParseVarDecl(bool isConst) {
+    Token name = Consume(TokenType::Identifier, "Expected variable name");
+    auto s = std::make_shared<Stmt>();
+    s->type = isConst ? StmtType::ConstDecl : StmtType::VarDecl;
+    s->name = name.value;
+    s->isConst = isConst;
+    
+    if (Match(TokenType::Assign)) {
+        s->expr = ParseExpression();
+    }
+    Consume(TokenType::Semicolon, "Expected ';' after variable declaration");
+    return s;
+}
+
+StmtPtr Parser::ParseFunDecl() {
+    Token name = Consume(TokenType::Identifier, "Expected function name");
+    Consume(TokenType::LeftParen, "Expected '(' after function name");
+    
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::FunDecl;
+    s->name = name.value;
+    
+    if (!Check(TokenType::RightParen)) {
+        do {
+            Token p = Consume(TokenType::Identifier, "Expected parameter name");
+            s->params.push_back(p.value);
+        } while (Match(TokenType::Comma));
+    }
+    Consume(TokenType::RightParen, "Expected ')' after parameters");
+    
+    Consume(TokenType::LeftBrace, "Expected '{' before function body");
+    s->body = ParseBlock();
+    return s;
+}
+
+StmtPtr Parser::ParseIf() {
+    Consume(TokenType::LeftParen, "Expected '(' after 'if'");
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::If;
+    s->condition = ParseExpression();
+    Consume(TokenType::RightParen, "Expected ')' after if condition");
+    s->body = ParseStatement();
+    if (Match(TokenType::Else)) {
+        s->elseBody = ParseStatement();
+    }
+    return s;
+}
+
+StmtPtr Parser::ParseWhile() {
+    Consume(TokenType::LeftParen, "Expected '(' after 'while'");
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::While;
+    s->condition = ParseExpression();
+    Consume(TokenType::RightParen, "Expected ')' after while condition");
+    s->body = ParseStatement();
+    return s;
+}
+
+StmtPtr Parser::ParseFor() {
+    Consume(TokenType::LeftParen, "Expected '(' after 'for'");
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::For;
+    
+    // for (var i in range) or for (init; cond; incr)
+    if (Check(TokenType::Var)) {
+        Advance();
+        Token name = Consume(TokenType::Identifier, "Expected variable name");
+        if (Match(TokenType::In)) {
+            // for-each style: for (var x in expr) body
+            s->name = name.value;
+            s->expr = ParseExpression();
+            Consume(TokenType::RightParen, "Expected ')'");
+            s->body = ParseStatement();
+            return s;
         }
-        Consume(); // }
+        // otherwise treat as var decl initializer
+        auto init = std::make_shared<Stmt>();
+        init->type = StmtType::VarDecl;
+        init->name = name.value;
+        if (Match(TokenType::Assign)) init->expr = ParseExpression();
+        s->initializer = init;
+        Consume(TokenType::Semicolon, "Expected ';'");
+    } else if (!Match(TokenType::Semicolon)) {
+        auto init = std::make_shared<Stmt>();
+        init->type = StmtType::ExprStmt;
+        init->expr = ParseExpression();
+        s->initializer = init;
+        Consume(TokenType::Semicolon, "Expected ';'");
+    }
+    
+    if (!Check(TokenType::Semicolon)) {
+        s->condition = ParseExpression();
+    }
+    Consume(TokenType::Semicolon, "Expected ';'");
+    
+    if (!Check(TokenType::RightParen)) {
+        s->increment = ParseExpression();
+    }
+    Consume(TokenType::RightParen, "Expected ')'");
+    s->body = ParseStatement();
+    return s;
+}
+
+StmtPtr Parser::ParseBlock() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Block;
+    while (!Check(TokenType::RightBrace) && !Check(TokenType::EndOfFile) && !HasError()) {
+        s->body_stmts.push_back(ParseStatement());
+    }
+    Consume(TokenType::RightBrace, "Expected '}' after block");
+    return s;
+}
+
+StmtPtr Parser::ParseReturn() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Return;
+    if (!Check(TokenType::Semicolon)) {
+        s->expr = ParseExpression();
+    }
+    Consume(TokenType::Semicolon, "Expected ';' after return");
+    return s;
+}
+
+StmtPtr Parser::ParsePrint() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Print;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after print");
+    return s;
+}
+
+StmtPtr Parser::ParseSpawn() {
+    // spawn "EntityType" at (x, y) [with { ... }]
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Spawn;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after spawn");
+    return s;
+}
+
+StmtPtr Parser::ParseDestroy() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Destroy;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after destroy");
+    return s;
+}
+
+StmtPtr Parser::ParseOnEvent() {
+    // on "EventName" -> fun body
+    // or on EventName(args) { body }
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::OnEvent;
+    
+    ExprPtr nameExpr = ParseExpression();
+    if (nameExpr && nameExpr->type == ExprType::String) {
+        s->eventName = nameExpr->stringValue;
+    } else if (nameExpr && nameExpr->type == ExprType::Identifier) {
+        s->eventName = nameExpr->name;
+    }
+    
+    if (Match(TokenType::Arrow)) {
+        // lambda-style
+        if (Match(TokenType::LeftBrace)) {
+            s->body = ParseBlock();
+        } else {
+            s->body = ParseStatement();
+        }
     } else {
-        // when_update or when_key KEY { ... }
-        std::string key;
-        if (MatchKw("when_key")) {
-            // already consumed via caller? No, we already consumed 'when_update' or 'when_key'
-            // For when_key, expect a key identifier next
-        }
-        // Actually we consumed the handler keyword already. Check if next is identifier (when_key case)
-        if (Peek().type == TokenType::Identifier) {
-            key = Consume().value;
-        }
-        Expect(TokenType::Brace, "'{'");
-        while (Peek().type != TokenType::Brace || Peek().value != "}") {
-            if (Peek().type == TokenType::End) throw std::runtime_error("Unclosed block");
-            ast_.push_back(ParseStatement());
-            updateIdx_.push_back(ast_.size() - 1);
-        }
-        Consume(); // }
+        s->body = ParseStatement();
     }
+    return s;
 }
 
-ASTNode Parser::ParseStatement() {
-    const Token& t = Peek();
-    if (t.type == TokenType::Keyword) {
-        if (t.value == "say") {
-            Consume();
-            ASTNode n{NodeKind::Say};
-            if (Peek().type == TokenType::String) {
-                n.strValue = Consume().value;
-            } else {
-                throw std::runtime_error("say requires a string argument");
-            }
-            return n;
-        }
-        if (t.value == "spawn") {
-            Consume();
-            ASTNode n{NodeKind::Spawn};
-            if (Peek().type == TokenType::Identifier || Peek().type == TokenType::String) {
-                n.strValue = Consume().value;
-            }
-            return n;
-        }
-        if (t.value == "destroy") {
-            Consume();
-            ASTNode n{NodeKind::Destroy};
-            if (Peek().type == TokenType::Identifier || Peek().type == TokenType::String) {
-                n.strValue = Consume().value;
-            }
-            return n;
-        }
-        if (t.value == "load_scene") {
-            Consume();
-            ASTNode n{NodeKind::LoadScene};
-            if (Peek().type == TokenType::String) n.strValue = Consume().value;
-            return n;
-        }
-        if (t.value == "set_background") {
-            Consume();
-            ASTNode n{NodeKind::SetBackground};
-            if (Peek().type == TokenType::String || Peek().type == TokenType::Identifier) {
-                n.strValue = Consume().value;
-            }
-            return n;
-        }
-        if (t.value == "set_fps") {
-            Consume();
-            ASTNode n{NodeKind::SetFps};
-            if (Peek().type == TokenType::Number) n.numValue = std::stof(Consume().value);
-            return n;
-        }
-        if (t.value == "exit") {
-            Consume();
-            return ASTNode{NodeKind::Exit};
-        }
-        if (t.value == "if") {
-            Consume();
-            // Expect key_held or key_hit
-            std::string kind = Consume().value;
-            std::string key  = Consume().value;
-            Expect(TokenType::Brace, "'{'");
-            ASTNode n;
-            n.kind = (kind == "key_hit") ? NodeKind::IfKeyHit : NodeKind::IfKeyHeld;
-            n.strValue = key;
-            while (Peek().type != TokenType::Brace || Peek().value != "}") {
-                if (Peek().type == TokenType::End) throw std::runtime_error("Unclosed if block");
-                n.block.push_back(ParseStatement());
-            }
-            Consume(); // }
-            return n;
-        }
-    }
-    // Otherwise: entity.property op value
-    if (t.type != TokenType::Identifier) {
-        std::ostringstream ss;
-        ss << "Line " << t.line << ":" << t.col << " unexpected token '" << t.value << "'";
-        throw std::runtime_error(ss.str());
-    }
-    ASTNode n{NodeKind::Assign};
-    // Identifier may contain dots (entity.prop) due to lexer behavior
-    std::string full = Consume().value;
-    size_t dot = full.find('.');
-    if (dot == std::string::npos) {
-        n.entity = "self";
-        n.property = full;
-    } else {
-        n.entity = full.substr(0, dot);
-        n.property = full.substr(dot + 1);
-    }
-    // Op
-    if (Peek().type != TokenType::Op) {
-        std::ostringstream ss;
-        ss << "Line " << Peek().line << " expected operator after " << full;
-        throw std::runtime_error(ss.str());
-    }
-    n.op = Consume().value;
-    // Value
-    if (Peek().type == TokenType::Number) {
-        n.numValue = std::stof(Consume().value);
-    } else if (Peek().type == TokenType::String) {
-        n.strValue = Consume().value;
-    } else if (Peek().type == TokenType::Identifier) {
-        n.strValue = Consume().value;
-    } else {
-        throw std::runtime_error("expected value after operator");
-    }
-    return n;
+StmtPtr Parser::ParseEmitEvent() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::EmitEvent;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after emit");
+    return s;
 }
 
-} // namespace luminus
+StmtPtr Parser::ParseContract() {
+    // contract "Name" { rule ... rule ... }
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Contract;
+    
+    if (Check(TokenType::String)) {
+        s->name = Advance().value;
+    } else if (Check(TokenType::Identifier)) {
+        s->name = Advance().value;
+    }
+    
+    Consume(TokenType::LeftBrace, "Expected '{' after contract name");
+    while (!Check(TokenType::RightBrace) && !Check(TokenType::EndOfFile) && !HasError()) {
+        s->rules.push_back(ParseStatement());
+    }
+    Consume(TokenType::RightBrace, "Expected '}' after contract body");
+    return s;
+}
+
+StmtPtr Parser::ParseVerify() {
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::Verify;
+    s->expr = ParseExpression();
+    Consume(TokenType::Semicolon, "Expected ';' after verify");
+    return s;
+}
+
+StmtPtr Parser::ParseComponentDecl() {
+    // component Name { field: type; ... }
+    auto s = std::make_shared<Stmt>();
+    s->type = StmtType::ComponentDecl;
+    Token name = Consume(TokenType::Identifier, "Expected component name");
+    s->name = name.value;
+    
+    if (Match(TokenType::LeftBrace)) {
+        while (!Check(TokenType::RightBrace) && !Check(TokenType::EndOfFile) && !HasError()) {
+            ParseStatement();  // skip field decls for now
+        }
+        Consume(TokenType::RightBrace, "Expected '}' after component");
+    }
+    return s;
+}
+
+// ============================================================================
+// Expressions
+// ============================================================================
+ExprPtr Parser::ParseExpression() {
+    return ParseAssignment();
+}
+
+ExprPtr Parser::ParseAssignment() {
+    ExprPtr expr = ParseLogicalOr();
+    
+    if (Check(TokenType::Assign)) {
+        Token op = Advance();
+        ExprPtr value = ParseAssignment();
+        if (expr && expr->type == ExprType::Identifier) {
+            auto e = std::make_shared<Expr>();
+            e->type = ExprType::Assignment;
+            e->left = expr;
+            e->right = value;
+            e->line = op.line;
+            return e;
+        }
+        Error("Invalid assignment target", op.line);
+    }
+    
+    if (MatchAny({TokenType::PlusAssign, TokenType::MinusAssign, TokenType::StarAssign, TokenType::SlashAssign})) {
+        Token op = m_Tokens[m_Pos - 1];
+        ExprPtr value = ParseAssignment();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::CompoundAssignment;
+        e->left = expr;
+        e->right = value;
+        e->op = op.value;
+        e->line = op.line;
+        return e;
+    }
+    
+    return expr;
+}
+
+ExprPtr Parser::ParseLogicalOr() {
+    ExprPtr expr = ParseLogicalAnd();
+    while (Match(TokenType::Or)) {
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Logical;
+        e->left = expr;
+        e->op = "or";
+        e->right = ParseLogicalAnd();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseLogicalAnd() {
+    ExprPtr expr = ParseEquality();
+    while (Match(TokenType::And)) {
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Logical;
+        e->left = expr;
+        e->op = "and";
+        e->right = ParseEquality();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseEquality() {
+    ExprPtr expr = ParseComparison();
+    while (MatchAny({TokenType::Equal, TokenType::NotEqual})) {
+        Token op = m_Tokens[m_Pos - 1];
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Binary;
+        e->left = expr;
+        e->op = op.value;
+        e->right = ParseComparison();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseComparison() {
+    ExprPtr expr = ParseAddition();
+    while (MatchAny({TokenType::Less, TokenType::Greater, TokenType::LessEqual, TokenType::GreaterEqual})) {
+        Token op = m_Tokens[m_Pos - 1];
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Binary;
+        e->left = expr;
+        e->op = op.value;
+        e->right = ParseAddition();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseAddition() {
+    ExprPtr expr = ParseMultiplication();
+    while (MatchAny({TokenType::Plus, TokenType::Minus})) {
+        Token op = m_Tokens[m_Pos - 1];
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Binary;
+        e->left = expr;
+        e->op = op.value;
+        e->right = ParseMultiplication();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseMultiplication() {
+    ExprPtr expr = ParseUnary();
+    while (MatchAny({TokenType::Star, TokenType::Slash, TokenType::Percent})) {
+        Token op = m_Tokens[m_Pos - 1];
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Binary;
+        e->left = expr;
+        e->op = op.value;
+        e->right = ParseUnary();
+        expr = e;
+    }
+    return expr;
+}
+
+ExprPtr Parser::ParseUnary() {
+    if (MatchAny({TokenType::Not, TokenType::Minus})) {
+        Token op = m_Tokens[m_Pos - 1];
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Unary;
+        e->op = op.value;
+        e->right = ParseUnary();
+        e->line = op.line;
+        return e;
+    }
+    return ParseCall();
+}
+
+ExprPtr Parser::ParseCall() {
+    ExprPtr expr = ParsePrimary();
+    while (true) {
+        if (Match(TokenType::LeftParen)) {
+            expr = FinishCall(expr);
+        } else if (Match(TokenType::Dot)) {
+            Token name = Consume(TokenType::Identifier, "Expected property name after '.'");
+            auto e = std::make_shared<Expr>();
+            e->type = ExprType::Member;
+            e->left = expr;
+            e->name = name.value;
+            expr = e;
+        } else if (Match(TokenType::LeftBracket)) {
+            ExprPtr index = ParseExpression();
+            Consume(TokenType::RightBracket, "Expected ']'");
+            auto e = std::make_shared<Expr>();
+            e->type = ExprType::Index;
+            e->left = expr;
+            e->right = index;
+            expr = e;
+        } else {
+            break;
+        }
+    }
+    return expr;
+}
+
+ExprPtr Parser::FinishCall(ExprPtr callee) {
+    auto e = std::make_shared<Expr>();
+    e->type = ExprType::Call;
+    e->callee = callee;
+    
+    if (!Check(TokenType::RightParen)) {
+        do {
+            e->args.push_back(ParseExpression());
+        } while (Match(TokenType::Comma));
+    }
+    Consume(TokenType::RightParen, "Expected ')' after arguments");
+    return e;
+}
+
+ExprPtr Parser::ParsePrimary() {
+    if (HasError()) return nullptr;
+    
+    Token t = Peek();
+    
+    if (t.type == TokenType::Number) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Number;
+        e->numberValue = std::stod(t.value);
+        e->line = t.line;
+        return e;
+    }
+    if (t.type == TokenType::String) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::String;
+        e->stringValue = t.value;
+        e->line = t.line;
+        return e;
+    }
+    if (t.type == TokenType::True) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Bool;
+        e->boolValue = true;
+        return e;
+    }
+    if (t.type == TokenType::False) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Bool;
+        e->boolValue = false;
+        return e;
+    }
+    if (t.type == TokenType::Null) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Null;
+        return e;
+    }
+    if (t.type == TokenType::Self) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Self;
+        return e;
+    }
+    if (t.type == TokenType::Entity) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Entity;
+        return e;
+    }
+    if (t.type == TokenType::Identifier) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Identifier;
+        e->name = t.value;
+        e->line = t.line;
+        return e;
+    }
+    if (t.type == TokenType::LeftParen) {
+        Advance();
+        ExprPtr inner = ParseExpression();
+        Consume(TokenType::RightParen, "Expected ')'");
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::Grouping;
+        e->left = inner;
+        return e;
+    }
+    if (t.type == TokenType::LeftBracket) {
+        Advance();
+        auto e = std::make_shared<Expr>();
+        e->type = ExprType::ListLiteral;
+        if (!Check(TokenType::RightBracket)) {
+            do {
+                e->elements.push_back(ParseExpression());
+            } while (Match(TokenType::Comma));
+        }
+        Consume(TokenType::RightBracket, "Expected ']' after list");
+        return e;
+    }
+    
+    Error("Unexpected token '" + t.value + "'", t.line);
+    return nullptr;
+}
+
+} // namespace luminus::script

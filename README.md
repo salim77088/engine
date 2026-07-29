@@ -1,95 +1,155 @@
-# Luminus Engine v1.0.0
+# Luminus Engine v2.0
 
-<p align="center">
-  <strong>A powerful, lightweight 2D/3D game engine built on Cocos2d-x v4</strong><br>
-  <em>Custom scripting language • Visual editor • Cross-platform CI • Self-healing builds</em>
-</p>
+A powerful, lightweight, cross-platform game engine built on top of [Raylib 5.5](https://github.com/raysan5/raylib), [EnTT](https://github.com/skypjack/entt), and [raygui 4.0](https://github.com/raysan5/raygui). Featuring a custom scripting language, smart contract system, modern ECS architecture, and a full visual editor.
 
----
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-green)
+![Language](https://img.shields.io/badge/Language-C%2B%2B17-orange)
 
-## What is Luminus Engine?
+## Features
 
-Luminus is a fork-derived game engine built on top of [Cocos2d-x v4](https://github.com/cocos2d/cocos2d-x) (MIT-licensed). We took the powerful, mature Cocos2d-x engine core and added:
+### Core
+- **Modern ECS** powered by EnTT (Entity-Component-System architecture)
+- **Cross-platform** — builds natively for Windows, Linux, and macOS
+- **Windowing** via Raylib 5.5 with MSAA, VSync, fullscreen support
+- **High-precision timing** with FPS tracking and time scaling
 
-- **LuminusScript** — a beginner-friendly scripting language (much easier than Lua)
-- **Visual Editor** — built with Dear ImGui, includes Outliner, Inspector, Console
-- **JSON Scene Format** — edit scenes with any text editor
-- **Cross-platform CI** — builds for Windows, Linux, macOS via GitHub Actions
-- **Self-healing CI** — automatic build-failure detection and patching
+### Graphics
+- **2D and 3D rendering** with camera systems
+- **Sprite batching** with draw order sorting
+- **PBR materials** (albedo, metallic, roughness, emission)
+- **Custom meshes** (Quad, Cube, Sphere, Plane)
+- **Post-processing** effects (bloom, vignette, chromatic aberration)
+- **Custom shaders** with hot-reload support
 
-## Quick Start
+### Scripting — LuminusScript v2
+A complete custom programming language with:
+- Lexer (tokenizer) — 40+ token types
+- Recursive-descent parser → AST
+- Tree-walking interpreter
+- Variables (`var`), constants (`const`), functions (`fun`)
+- Control flow: `if`/`else`, `while`, `for` (including for-each)
+- Event system: `on "EventName" -> { ... }` and `emit "EventName"`
+- Entity access via `self` keyword
+- List literals and operations
+- Native bindings to engine APIs (input, time, spawning)
 
-### Download pre-built binaries
+### Smart Game Contracts
+Verifiable game logic system inspired by blockchain smart contracts:
+```luminus
+contract "PlayerSafety" {
+    verify playerHealth > 0
+    verify playerHealth <= MAX_HEALTH
+}
+```
+- Rule-based contracts with conditions and actions
+- Violation tracking and statistics
+- Snapshot/verification for state validation
+- Built-in contracts: EntityHealth, Performance
 
-Go to [Actions tab](../../actions) → click latest successful build → download artifact for your OS.
+### Editor
+Full visual editor with:
+- **Hierarchy panel** — entity tree view
+- **Inspector panel** — component editing
+- **Console panel** — log viewer + live script execution
+- **Asset browser** — file system navigation
+- **Toolbar** — Play/Stop, Save/Load scene
+- **Status bar** — FPS, entity count, mode
 
-### Build from source
+### Physics
+- AABB collision detection
+- Rigid body dynamics with gravity and drag
+- Ray casting (2D)
+- Spatial queries (AABB overlap)
 
+### Audio
+- Sound effects and music streaming
+- Volume control per channel
+- Hot-reload of audio assets
+
+## Build
+
+### Prerequisites
+- CMake 3.16+
+- C++17 compiler (MSVC 2019+, GCC 9+, Clang 10+)
+
+### Linux
 ```bash
-git clone https://github.com/salim77088/engine.git
-cd engine
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --config Release --parallel
-./build/bin/luminus
+sudo apt install libasound2-dev libx11-dev libxrandr-dev \
+    libxinerama-dev libxcursor-dev libxi-dev libgl1-mesa-dev
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j4
 ```
 
-**Linux prerequisites:**
+### Windows
+```cmd
+mkdir build && cd build
+cmake .. -G "Visual Studio 17 2022" -A x64
+cmake --build . --config Release
+```
+
+### macOS
 ```bash
-sudo apt-get install -y libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev \
-  libxi-dev libgl1-mesa-dev libasound2-dev libgtk-3-dev libfontconfig1-dev \
-  libglib2.0-dev pkg-config
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j4
 ```
 
 ## Usage
 
 ```bash
-luminus                              # default scene + editor
-luminus --scene path/to/scene.json   # custom scene
-luminus --script path/to/script.ls   # load LuminusScript
-luminus --no-editor                   # disable editor
-luminus --width 1920 --height 1080   # custom resolution
+./luminus                              # Start with editor + default scene
+./luminus --scene examples/demo.scene.json
+./luminus --fullscreen --no-editor     # Game-only mode
+./luminus --width 1920 --height 1080
 ```
 
-### In-app keys
-- `F1` — toggle visual editor
-- `ESC` — quit
+## LuminusScript Example
 
-## LuminusScript — Easy Scripting
+```luminus
+// Variable declarations
+var playerHealth = 100
+const MAX_HEALTH = 100
+var frameCount = 0
 
-```
-# Move player with arrow keys
-when_start {
-    say "GameStarted"
+// Function declaration
+fun calculateDamage(base, multiplier) {
+    return base * multiplier
 }
 
-when_update {
-    if key_held LEFT  { player.x -= 5 }
-    if key_held RIGHT { player.x += 5 }
-    if key_held UP    { player.y -= 5 }
-    if key_held DOWN  { player.y += 5 }
-    if key_hit SPACE  { player.y -= 20 }
-    if key_held ESC   { exit }
+// Entity lifecycle hooks
+fun onStart(self) {
+    print("Entity " + self + " started!")
 }
-```
 
-### Supported statements
-- `entity.property op value` — x, y, z, w, h, rotation, scale, opacity, visible, text, color
-- `if key_held KEY { ... }` — held check (LEFT/RIGHT/UP/DOWN/SPACE/ENTER/ESC/A-Z/0-9)
-- `if key_hit KEY { ... }` — pressed-once check
-- `say "text"` — log to console
-- `spawn NAME`, `destroy NAME`
-- `load_scene "path"`, `set_background COLOR`, `set_fps N`, `exit`
+fun onUpdate(self, dt) {
+    frameCount = frameCount + 1
+    
+    // Movement with arrow keys
+    if (keyDown(263)) {  // KEY_LEFT
+        self.x = self.x - 200 * dt
+    }
+}
 
-## Scene Format
+// Event system
+on "GameStart" -> {
+    print("Game started!")
+}
 
-```json
-{
-  "name": "My Scene",
-  "background": "DARKGRAY",
-  "entities": [
-    { "name": "player", "type": "sprite", "x": 100, "y": 200, "w": 32, "h": 32, "color": "SKYBLUE" },
-    { "name": "label", "type": "text", "text": "Hello", "x": 50, "y": 50, "fontSize": 24, "color": "GOLD" }
-  ]
+// Smart contract — verifiable game rule
+contract "PlayerSafety" {
+    verify playerHealth > 0
+    verify playerHealth <= MAX_HEALTH
+}
+
+// List iteration
+fun sum(items) {
+    var total = 0
+    for (var x in items) {
+        total = total + x
+    }
+    return total
 }
 ```
 
@@ -97,39 +157,26 @@ when_update {
 
 ```
 src/
-├── core/         Engine, SceneManager, Entity types
-├── graphics/     GraphicsAdapter (Cocos2d-x wrapper)
-├── scripting/    LuminusScript: Lexer, Parser, Interpreter
-├── editor/       ImGui-based Editor (Outliner, Inspector, Console)
-├── audio/        AudioSystem (Cocos2d-x AudioEngine wrapper)
-└── assets/       AssetManager (FileUtils wrapper)
+├── core/           # Engine, Window, Input, Time, SceneManager (ECS)
+├── graphics/       # Renderer, Camera, Material, Mesh, Shader, PostProcessor
+├── scripting/      # LuminusScript: Lexer, Parser, Interpreter
+├── editor/         # Editor + panels (Hierarchy, Inspector, Console, AssetBrowser)
+├── audio/          # AudioSystem
+├── assets/         # AssetManager with hot-reload
+├── physics/        # PhysicsWorld (AABB, raycast, queries)
+├── contracts/      # SmartContract + ContractVM
+└── utils/          # Logger, FileIO
 ```
-
-### Dependencies (auto-fetched via CMake FetchContent)
-- [Cocos2d-x v4](https://github.com/cocos2d/cocos2d-x) — MIT (from our fork)
-- [Dear ImGui 1.91.5](https://github.com/ocornut/imgui) — MIT
-- [nlohmann/json 3.11.3](https://github.com/nlohmann/json) — MIT
-
-## Self-Healing CI
-
-Two workflows work together:
-1. `build.yml` — builds for all 3 platforms, uploads artifacts
-2. `autofix.yml` — triggers automatically when build fails, runs `tools/autofix.py` which:
-   - Downloads failed job logs from GitHub API
-   - Scans for known error patterns (missing includes, missing semicolons, wrong include paths)
-   - Applies patches to source files
-   - Commits and pushes the fix automatically
-   - Triggers a new build automatically
 
 ## License
 
-- **Luminus Engine wrapper code:** MIT
-- **Cocos2d-x:** MIT
-- **Dear ImGui:** MIT
-- **nlohmann/json:** MIT
+MIT License — fork it, modify it, ship it.
 
-All components are 100% open source.
+## Acknowledgments
 
----
-
-<p align="center">Built with Cocos2d-x + Dear ImGui • Powered by GitHub Actions</p>
+Built on the shoulders of giants:
+- [Raylib](https://github.com/raysan5/raylib) — Zlib license
+- [EnTT](https://github.com/skypjack/entt) — MIT license
+- [raygui](https://github.com/raysan5/raygui) — Zlib license
+- [nlohmann/json](https://github.com/nlohmann/json) — MIT license
+- [stb](https://github.com/nothings/stb) — Public Domain

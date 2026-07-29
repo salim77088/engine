@@ -1,111 +1,224 @@
+// core/SceneManager.cpp
 #include "SceneManager.h"
+#include "utils/Logger.h"
+#include "utils/FileIO.h"
 #include <nlohmann/json.hpp>
-#include <fstream>
-#include <iostream>
 
 using json = nlohmann::json;
 
 namespace luminus {
 
-SceneManager& SceneManager::Instance() {
-    static SceneManager inst;
-    return inst;
+// ============================================================================
+// Scene
+// ============================================================================
+
+Scene::Scene() {
+    LM_TRACE("Scene", "Scene created: %s", m_Name.c_str());
 }
 
-bool SceneManager::LoadFromFile(const std::string& path) {
-    std::ifstream f(path);
-    if (!f) {
-        std::cerr << "[SceneManager] Cannot open: " << path << "\n";
-        return false;
-    }
-    json j;
-    try { f >> j; }
-    catch (const std::exception& e) {
-        std::cerr << "[SceneManager] Invalid JSON: " << e.what() << "\n";
-        return false;
-    }
-    Scene s;
-    s.name = j.value("name", "untitled");
-    s.background = j.value("background", "DARKGRAY");
-    s.physicsEnabled = j.value("physics", false);
-    s.gravity = j.value("gravity", 9.8f);
-
-    if (j.contains("entities")) {
-        for (auto& ej : j["entities"]) {
-            Entity e;
-            e.id         = ej.value("id",         (int)s.entities.size());
-            e.name       = ej.value("name",       "entity_" + std::to_string(s.entities.size()));
-            e.type       = ej.value("type",       "sprite");
-            e.spritePath = ej.value("sprite",     "");
-            e.x          = ej.value("x",          0.0f);
-            e.y          = ej.value("y",          0.0f);
-            e.z          = ej.value("z",          0.0f);
-            e.width      = ej.value("w",          50.0f);
-            e.height     = ej.value("h",          50.0f);
-            e.rotation   = ej.value("rotation",   0.0f);
-            e.scale      = ej.value("scale",      1.0f);
-            e.opacity    = ej.value("opacity",    1.0f);
-            e.visible    = ej.value("visible",    true);
-            e.color      = ej.value("color",      "WHITE");
-            e.text       = ej.value("text",       "");
-            e.fontSize   = ej.value("fontSize",   24);
-            e.fontPath   = ej.value("font",       "");
-            s.entities.push_back(e);
+Scene::~Scene() {
+    // Unload textures/models owned by SpriteRenderer/MeshRenderer
+    auto spriteView = m_Registry.view<SpriteRenderer>();
+    for (auto entity : spriteView) {
+        auto& sr = spriteView.get<SpriteRenderer>(entity);
+        if (sr.loaded && sr.texture.id != 0) {
+            UnloadTexture(sr.texture);
         }
     }
-    scenes_[s.name] = std::move(s);
-    currentName_ = j.value("name", "untitled");
-    std::cout << "[SceneManager] Loaded '" << currentName_ << "' with "
-              << scenes_[currentName_].entities.size() << " entities\n";
+    auto meshView = m_Registry.view<MeshRenderer>();
+    for (auto entity : meshView) {
+        auto& mr = meshView.get<MeshRenderer>(entity);
+        if (mr.loaded && mr.model.materials != nullptr) {
+            UnloadModel(mr.model);
+        }
+    }
+    auto audioView = m_Registry.view<AudioSource>();
+    for (auto entity : audioView) {
+        auto& as = audioView.get<AudioSource>(entity);
+        if (as.loaded) {
+            if (as.isMusic) UnloadMusicStream(as.music);
+            else UnloadSound(as.sound);
+        }
+    }
+    LM_TRACE("Scene", "Scene destroyed: %s", m_Name.c_str());
+}
+
+EntityID Scene::CreateEntity(const std::string& name) {
+    EntityID e = m_Registry.create();
+    m_Registry.emplace<Tag>(e, name.empty() ? "Entity" : name, "Untagged");
+    m_Registry.emplace<Transform>(e);
+    return e;
+}
+
+void Scene::DestroyEntity(EntityID entity) {
+    if (m_Registry.valid(entity)) {
+        m_Registry.destroy(entity);
+    }
+}
+
+void Scene::DestroyAllEntities() {
+    m_Registry.clear();
+}
+
+void Scene::ForEachEntity(std::function<void(EntityID)> fn) {
+    m_Registry.each(fn);
+}
+
+bool Scene::Save(const std::string& path) {
+    json j;
+    j["scene"] = m_Name;
+    j["entities"] = json::array();
+    
+    auto view = m_Registry.view<Tag, Transform>();
+    for (auto entity : view) {
+        auto& tag = view.get<Tag>(entity);
+        auto& tf = view.get<Transform>(entity);
+        
+        json ej;
+        ej["id"] = static_cast<uint32_t>(entity);
+        ej["name"] = tag.name;
+        ej["tag"] = tag.tag;
+        ej["position"] = {tf.position.x, tf.position.y, tf.position.z};
+        ej["rotation"] = {tf.rotation.x, tf.rotation.y, tf.rotation.z};
+        ej["scale"] = {tf.scale.x, tf.scale.y, tf.scale.z};
+        
+        if (HasComponent<SpriteRenderer>(entity)) {
+            auto& sr = GetComponent<SpriteRenderer>(entity);
+            ej["sprite"] = {
+                {"texture", sr.texturePath},
+                {"tint", {sr.tint.r, sr.tint.g, sr.tint.b, sr.tint.a}},
+                {"order", sr.drawOrder}
+            };
+        }
+        if (HasComponent<CameraComponent>(entity)) {
+            auto& cam = GetComponent<CameraComponent>(entity);
+            ej["camera"] = {
+                {"isPrimary", cam.isPrimary},
+                {"is2D", cam.is2D},
+                {"fov", cam.fov}
+            };
+        }
+        if (HasComponent<ScriptComponent>(entity)) {
+            auto& sc = GetComponent<ScriptComponent>(entity);
+            ej["script"] = sc.scriptPath;
+        }
+        
+        j["entities"].push_back(ej);
+    }
+    
+    std::string dir = FileIO::GetDirectory(path);
+    if (!dir.empty() && !FileIO::Exists(dir)) FileIO::MakeDirs(dir);
+    
+    bool ok = FileIO::WriteText(path, j.dump(2));
+    if (ok) LM_INFO("Scene", "Saved to %s (%d entities)", path.c_str(), (int)j["entities"].size());
+    else LM_ERROR("Scene", "Failed to save to %s", path.c_str());
+    return ok;
+}
+
+bool Scene::Load(const std::string& path) {
+    std::string content = FileIO::ReadText(path);
+    if (content.empty()) {
+        LM_ERROR("Scene", "Cannot read scene file: %s", path.c_str());
+        return false;
+    }
+    
+    json j;
+    try {
+        j = json::parse(content);
+    } catch (const std::exception& e) {
+        LM_ERROR("Scene", "JSON parse error: %s", e.what());
+        return false;
+    }
+    
+    DestroyAllEntities();
+    
+    if (j.contains("scene")) m_Name = j["scene"];
+    
+    if (j.contains("entities")) {
+        for (auto& ej : j["entities"]) {
+            std::string name = ej.value("name", "Entity");
+            EntityID e = CreateEntity(name);
+            
+            auto& tag = GetComponent<Tag>(e);
+            tag.tag = ej.value("tag", "Untagged");
+            
+            auto& tf = GetComponent<Transform>(e);
+            if (ej.contains("position")) {
+                auto p = ej["position"];
+                tf.position = {p[0], p[1], p[2]};
+            }
+            if (ej.contains("rotation")) {
+                auto r = ej["rotation"];
+                tf.rotation = {r[0], r[1], r[2]};
+            }
+            if (ej.contains("scale")) {
+                auto s = ej["scale"];
+                tf.scale = {s[0], s[1], s[2]};
+            }
+            
+            if (ej.contains("sprite")) {
+                SpriteRenderer sr;
+                sr.texturePath = ej["sprite"].value("texture", "");
+                auto tint = ej["sprite"]["tint"];
+                sr.tint = {(unsigned char)tint[0], (unsigned char)tint[1], 
+                           (unsigned char)tint[2], (unsigned char)tint[3]};
+                sr.drawOrder = ej["sprite"].value("order", 0);
+                AddComponent(e, sr);
+            }
+            
+            if (ej.contains("camera")) {
+                CameraComponent cc;
+                cc.isPrimary = ej["camera"].value("isPrimary", false);
+                cc.is2D = ej["camera"].value("is2D", false);
+                cc.fov = ej["camera"].value("fov", 60.0f);
+                AddComponent(e, cc);
+            }
+            
+            if (ej.contains("script")) {
+                ScriptComponent sc;
+                sc.scriptPath = ej["script"];
+                AddComponent(e, sc);
+            }
+        }
+    }
+    
+    LM_INFO("Scene", "Loaded %s (%d entities)", path.c_str(), (int)GetEntityCount());
     return true;
 }
 
-bool SceneManager::SaveToFile(const std::string& path) const {
-    auto it = scenes_.find(currentName_);
-    if (it == scenes_.end()) return false;
-    const Scene& s = it->second;
-    json j;
-    j["name"] = s.name;
-    j["background"] = s.background;
-    j["physics"] = s.physicsEnabled;
-    j["gravity"] = s.gravity;
-    j["entities"] = json::array();
-    for (const auto& e : s.entities) {
-        j["entities"].push_back({
-            {"id", e.id}, {"name", e.name}, {"type", e.type},
-            {"sprite", e.spritePath},
-            {"x", e.x}, {"y", e.y}, {"z", e.z},
-            {"w", e.width}, {"h", e.height},
-            {"rotation", e.rotation}, {"scale", e.scale},
-            {"opacity", e.opacity}, {"visible", e.visible},
-            {"color", e.color}, {"text", e.text},
-            {"fontSize", e.fontSize}, {"font", e.fontPath}
-        });
+// ============================================================================
+// SceneManager
+// ============================================================================
+
+SceneManager& SceneManager::Get() {
+    static SceneManager instance;
+    return instance;
+}
+
+void SceneManager::SetActive(Scene* scene) {
+    m_Active = scene;
+    if (scene) LM_INFO("SceneManager", "Active scene: %s", scene->GetName().c_str());
+}
+
+void SceneManager::PushScene(Scene* scene) {
+    m_SceneStack.push_back(std::unique_ptr<Scene>(scene));
+    m_Active = scene;
+}
+
+void SceneManager::PopScene() {
+    if (!m_SceneStack.empty()) {
+        m_SceneStack.pop_back();
+        m_Active = m_SceneStack.empty() ? nullptr : m_SceneStack.back().get();
     }
-    std::ofstream f(path);
-    f << j.dump(2);
-    return f.good();
 }
 
-void SceneManager::SetActive(const std::string& name) {
-    if (scenes_.count(name)) currentName_ = name;
-}
-
-void SceneManager::AddEntity(const Entity& e) {
-    scenes_[currentName_].entities.push_back(e);
-}
-
-void SceneManager::RemoveEntity(const std::string& name) {
-    auto& v = scenes_[currentName_].entities;
-    v.erase(std::remove_if(v.begin(), v.end(),
-        [&](const Entity& e){ return e.name == name; }), v.end());
-}
-
-Entity* SceneManager::FindEntity(const std::string& name) {
-    for (auto& e : scenes_[currentName_].entities) {
-        if (e.name == name) return &e;
-    }
-    return nullptr;
+Scene* SceneManager::NewScene(const std::string& name) {
+    auto scene = new Scene();
+    scene->SetName(name);
+    m_SceneStack.push_back(std::unique_ptr<Scene>(scene));
+    m_Active = scene;
+    LM_INFO("SceneManager", "Created new scene: %s", name.c_str());
+    return scene;
 }
 
 } // namespace luminus

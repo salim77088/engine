@@ -1,49 +1,65 @@
+// scripting/LuminusScript.cpp
 #include "LuminusScript.h"
-#include "Parser.h"
-#include "Lexer.h"
-#include <fstream>
-#include <sstream>
-#include <iostream>
+#include "../utils/Logger.h"
 
 namespace luminus {
 
-bool LuminusScript::LoadFromFile(const std::string& path) {
-    std::ifstream f(path);
-    if (!f) {
-        error_ = "Cannot open file: " + path;
-        return false;
-    }
-    std::stringstream ss;
-    ss << f.rdbuf();
-    source_ = ss.str();
-    return LoadFromString(source_);
-}
+LuminusScript::LuminusScript() {}
+LuminusScript::~LuminusScript() { Shutdown(); }
 
-bool LuminusScript::LoadFromString(const std::string& source) {
-    source_ = source;
-    Parser p;
-    if (!p.Parse(source_)) {
-        error_ = p.Error();
-        return false;
-    }
-    ast_ = std::move(p.Ast());
-    startIdx_ = std::move(p.StartIdx());
-    updateIdx_ = std::move(p.UpdateIdx());
+bool LuminusScript::Init() {
+    LM_INFO("Script", "LuminusScript v2.0 initialized");
+    LM_INFO("Script", "Language features: variables, functions, classes-as-entities, events, contracts");
+    m_Initialized = true;
     return true;
 }
 
-void LuminusScript::RunStartHandlers() {
-    if (!exec_) return;
-    for (size_t idx : startIdx_) {
-        if (idx < ast_.size()) exec_(ast_[idx]);
+void LuminusScript::Shutdown() {
+    if (m_Initialized) {
+        LM_INFO("Script", "LuminusScript shutdown");
+        m_Initialized = false;
     }
 }
 
-void LuminusScript::RunUpdateHandlers() {
-    if (!exec_) return;
-    for (size_t idx : updateIdx_) {
-        if (idx < ast_.size()) exec_(ast_[idx]);
-    }
+bool LuminusScript::LoadFile(const std::string& path) {
+    return m_Interpreter.ExecuteFile(path);
+}
+
+bool LuminusScript::LoadString(const std::string& source, const std::string& name) {
+    (void)name;
+    return m_Interpreter.ExecuteString(source);
+}
+
+bool LuminusScript::CallFunction(const std::string& name) {
+    if (!m_Initialized) return false;
+    m_Interpreter.CallFunction(name, {});
+    return !m_Interpreter.HasError();
+}
+
+bool LuminusScript::CallFunction(const std::string& name, EntityID entity) {
+    if (!m_Initialized) return false;
+    m_Interpreter.SetEntityContext(entity);
+    m_Interpreter.CallFunction(name, {script::Value::EntityVal(entity)});
+    return !m_Interpreter.HasError();
+}
+
+bool LuminusScript::CallFunction(const std::string& name, EntityID entity, float dt) {
+    if (!m_Initialized) return false;
+    m_Interpreter.SetEntityContext(entity);
+    m_Interpreter.CallFunction(name, {script::Value::EntityVal(entity), script::Value::Num(dt)});
+    return !m_Interpreter.HasError();
+}
+
+void LuminusScript::RegisterNative(const std::string& name, script::NativeFn fn) {
+    m_Interpreter.RegisterNative(name, fn);
+}
+
+void LuminusScript::EmitEvent(const std::string& name) {
+    m_Interpreter.EmitEvent(name, {});
+}
+
+void LuminusScript::EmitEvent(const std::string& name, const std::vector<script::Value>& args) {
+    m_Interpreter.EmitEvent(name, args);
 }
 
 } // namespace luminus

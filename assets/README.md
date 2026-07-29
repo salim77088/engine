@@ -1,2 +1,8 @@
-# Place game assets here (sprites, sounds, fonts).
-# This folder is copied next to the binary at build time.
+# Assets directory
+
+Place game assets here:
+- `textures/` — PNG, JPG, BMP images
+- `audio/` — WAV, OGG, MP3 files
+- `models/` — OBJ, GLTF, IQM files
+- `fonts/` — TTF, OTF fonts
+- `shaders/` — GLSL shaders
