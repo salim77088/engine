@@ -33,10 +33,10 @@ private:
     bool m_ChromaticAberration = false;
     bool m_Grayscale = false;
     bool m_Invert = false;
-    
+
     float m_BloomIntensity = 1.0f;
     float m_VignetteIntensity = 0.5f;
-    float m_ChromaticAberration = 0.5f;
+    float m_ChromaticAberrationAmount = 0.5f;
 };
 
 } // namespace luminus

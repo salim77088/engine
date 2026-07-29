@@ -61,7 +61,9 @@ void Scene::DestroyAllEntities() {
 }
 
 void Scene::ForEachEntity(std::function<void(EntityID)> fn) {
-    m_Registry.each([&fn](auto entity) { fn(entity); });
+    // Capture fn by reference and call it for each entity
+    auto handler = [&fn](auto entity) { fn(static_cast<EntityID>(entity)); };
+    m_Registry.each(handler);
 }
 
 bool Scene::Save(const std::string& path) {
