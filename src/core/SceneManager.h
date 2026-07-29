@@ -150,8 +150,9 @@ public:
     const entt::registry& GetRegistry() const { return m_Registry; }
     
     size_t GetEntityCount() const {
-        // EnTT v3.13+ uses storage<entt::entity>() to access the entity pool
-        return m_Registry.storage<entt::entity>().size();
+        // EnTT v3.13+ returns pointer from storage<>()
+        auto* pool = m_Registry.storage<entt::entity>();
+        return pool ? pool->size() : 0;
     }
     
     void SetName(const std::string& name) { m_Name = name; }
