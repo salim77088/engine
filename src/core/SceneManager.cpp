@@ -61,13 +61,11 @@ void Scene::DestroyAllEntities() {
 }
 
 void Scene::ForEachEntity(std::function<void(EntityID)> fn) {
-    // EnTT v3.13+ returns pointer from storage<>()
-    auto* pool = m_Registry.storage<entt::entity>();
-    if (pool) {
-        pool->each([&fn](auto entity) {
-            fn(static_cast<EntityID>(entity));
-        });
-    }
+    // EnTT v3.13+ - use view<> to iterate entities (stable API)
+    auto view = m_Registry.view<>();
+    view.each([&fn](auto entity) {
+        fn(static_cast<EntityID>(entity));
+    });
 }
 
 bool Scene::Save(const std::string& path) {
