@@ -2,12 +2,12 @@
 #pragma once
 #include "raylib.h"
 #include "rlgl.h"
+#include "PostProcessor.h"
 #include <memory>
 
 namespace luminus {
 
 class Camera;
-class PostProcessor;
 
 class Renderer {
 public:

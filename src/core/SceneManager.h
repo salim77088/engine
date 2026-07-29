@@ -149,7 +149,7 @@ public:
     entt::registry& GetRegistry() { return m_Registry; }
     const entt::registry& GetRegistry() const { return m_Registry; }
     
-    size_t GetEntityCount() const { return m_Registry.alive(); }
+    size_t GetEntityCount() const { return m_Registry.size(); }
     
     void SetName(const std::string& name) { m_Name = name; }
     const std::string& GetName() const { return m_Name; }

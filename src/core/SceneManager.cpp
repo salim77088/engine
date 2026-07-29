@@ -61,7 +61,7 @@ void Scene::DestroyAllEntities() {
 }
 
 void Scene::ForEachEntity(std::function<void(EntityID)> fn) {
-    m_Registry.each(fn);
+    m_Registry.each([&fn](auto entity) { fn(entity); });
 }
 
 bool Scene::Save(const std::string& path) {
