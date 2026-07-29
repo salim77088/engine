@@ -40,14 +40,8 @@ set(BUILD_CPP_TESTS OFF CACHE BOOL "" FORCE)
 set(BUILD_LUA_TESTS OFF CACHE BOOL "" FORCE)
 set(BUILD_TEMPLATE_TESTS OFF CACHE BOOL "" FORCE)
 set(BUILD_ENGINE_DONE ON CACHE BOOL "" FORCE)
-
-# Cocos2d-x requires these on Linux
-if(UNIX AND NOT APPLE)
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(GTK3 REQUIRED gtk3)
-    pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
-    pkg_check_modules(GLIB2 REQUIRED glib-2.0)
-endif()
+# Don't build cocos2d-x's own external extensions we don't need
+set(BUILD_EDITOR_COCOS_SUPPORT OFF CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(cocos2d_x)
 
