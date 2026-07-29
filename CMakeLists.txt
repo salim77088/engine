@@ -133,6 +133,7 @@ target_include_directories(luminus PRIVATE
 target_link_libraries(luminus PRIVATE
     raylib
     raygui
+    EnTT::EnTT
     nlohmann_json::nlohmann_json
 )
 
