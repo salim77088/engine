@@ -26,6 +26,9 @@ set(FETCHCONTENT_QUIET OFF)
 
 # Use shallow clone to save bandwidth
 set(FETCHCONTENT_GIT_REMOTE TRUE)
+# Skip problematic submodules (ccs-res uses git:// protocol which is blocked)
+set(FETCHCONTENT_GIT_SUBMODULES "")
+set(GIT_SUBMODULES "")
 
 FetchContent_Declare(
     cocos2d_x
@@ -33,6 +36,7 @@ FetchContent_Declare(
     GIT_TAG        v4
     GIT_SHALLOW    TRUE
     GIT_PROGRESS   TRUE
+    GIT_SUBMODULES ""
 )
 
 # Don't build cocos2d-x tests/examples (saves time)
