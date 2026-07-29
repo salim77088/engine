@@ -1,383 +1,400 @@
-Build on ubuntu-latest	Build	﻿2026-07-29T19:56:10.7545123Z ##[group]Run cmake --build build --config Release --parallel 4
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7546003Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7590366Z shell: /usr/bin/bash -e {0}
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7590633Z ##[endgroup]
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7836783Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7854949Z [  4%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7858056Z [  4%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:10.7859985Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.0621769Z [  8%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.0887746Z [  9%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.1204546Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.1627106Z [ 12%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.2346692Z [ 14%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.3566863Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.3876630Z [ 17%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.4454254Z [ 19%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.4462987Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.4781489Z [ 22%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.5146603Z [ 24%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.5406723Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.5706894Z [ 27%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.5976675Z [ 29%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.6470009Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.6716707Z [ 32%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.7795023Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:11.8766905Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.0187212Z [ 37%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.3727268Z [ 37%] Built target glfw
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.3804576Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.3809723Z [ 40%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.3810854Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:12.3812303Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:13.3594718Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9576637Z In file included from /home/runner/work/engine/engine/build/_deps/raylib-src/src/raudio.c:282:
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9606830Z In function ‘memcopy’,
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9636726Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9666993Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9725931Z   370 |         d[i]=s[i];
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9755837Z       |         ~~~~^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9786630Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9816794Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1080 into destination object ‘title’ of size 20
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9826333Z   125 |     muchar  title[20];
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9875818Z       |             ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9906012Z In function ‘memcopy’,
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9936549Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9966555Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
-Build on ubuntu-latest	Build	2026-07-29T19:56:15.9995817Z   370 |         d[i]=s[i];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0025819Z       |         ~~~~^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0056624Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0086759Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1081 into destination object ‘title’ of size 20
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0115857Z   125 |     muchar  title[20];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0145828Z       |             ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0176065Z In function ‘memcopy’,
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0206593Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0236456Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0265823Z   370 |         d[i]=s[i];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0295867Z       |         ~~~~^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0326576Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0356944Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1082 into destination object ‘title’ of size 20
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0358167Z   125 |     muchar  title[20];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0358602Z       |             ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0359059Z In function ‘memcopy’,
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0360107Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0361757Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0362923Z   370 |         d[i]=s[i];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0363300Z       |         ~~~~^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0364248Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0366248Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1083 into destination object ‘title’ of size 20
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0367403Z   125 |     muchar  title[20];
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.0367804Z       |             ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:16.1116487Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:18.7296696Z [ 48%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:31.7511523Z [ 50%] Linking C static library libraylib.a
-Build on ubuntu-latest	Build	2026-07-29T19:56:39.8233899Z [ 50%] Built target raylib
-Build on ubuntu-latest	Build	2026-07-29T19:56:39.8302625Z [ 51%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.3996439Z [ 53%] Linking C static library libraygui.a
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.4852808Z [ 53%] Built target raygui
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.4937833Z [ 54%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.4939021Z [ 56%] Building CXX object CMakeFiles/luminus.dir/src/core/Engine.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.4940045Z [ 58%] Building CXX object CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:41.4942184Z [ 59%] Building CXX object CMakeFiles/luminus.dir/src/core/Window.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.1186462Z [ 61%] Building CXX object CMakeFiles/luminus.dir/src/core/Input.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.4936497Z [ 62%] Building CXX object CMakeFiles/luminus.dir/src/core/Time.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6086846Z [ 64%] Building CXX object CMakeFiles/luminus.dir/src/graphics/Renderer.cpp.o
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6296744Z In file included from /home/runner/work/engine/engine/src/core/Engine.cpp:6:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6357234Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6359469Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘alive’
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6376166Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6405907Z       |                                                       ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6436088Z In file included from /home/runner/work/engine/engine/src/main.cpp:3:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6466955Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6497040Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘alive’
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6526018Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6555914Z       |                                                       ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6856552Z In file included from /home/runner/work/engine/engine/src/core/SceneManager.cpp:2:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6867103Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6869200Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘alive’
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6870550Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on ubuntu-latest	Build	2026-07-29T19:56:42.6871235Z       |                                                       ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.1626977Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:76: CMakeFiles/luminus.dir/src/main.cpp.o] Error 1
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.1636618Z gmake[2]: *** Waiting for unfinished jobs....
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.1967647Z /home/runner/work/engine/engine/src/core/SceneManager.cpp: In member function ‘void luminus::Scene::ForEachEntity(std::function<void(entt::entity)>)’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.1987953Z /home/runner/work/engine/engine/src/core/SceneManager.cpp:64:16: error: ‘using entt::registry = class entt::basic_registry<>’ {aka ‘class entt::basic_registry<>’} has no member named ‘each’
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.2016637Z    64 |     m_Registry.each(fn);
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.2046695Z       |                ^~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7158437Z In file included from /home/runner/work/engine/engine/src/graphics/Renderer.cpp:3:
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7160987Z /home/runner/work/engine/engine/src/graphics/../core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7164559Z /home/runner/work/engine/engine/src/graphics/../core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘alive’
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7166819Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7168181Z       |                                                       ^~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.7869564Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:90: CMakeFiles/luminus.dir/src/core/Engine.cpp.o] Error 1
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8836531Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp: In member function ‘void luminus::Renderer::DrawCube3D(Vector3, Vector3, Color)’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8839437Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:46: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::r)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8841635Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8842768Z       |                                       ~~~~~~~^~
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8845071Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:57: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::g)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8847413Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8848477Z       |                                                  ~~~~~~~^~
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8850729Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:68: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::b)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8852752Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
-Build on ubuntu-latest	Build	2026-07-29T19:56:43.8853854Z       |                                                             ~~~~~~~^~
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0219744Z In file included from /usr/include/c++/13/memory:78,
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0220660Z                  from /home/runner/work/engine/engine/src/graphics/Renderer.h:5,
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0221456Z                  from /home/runner/work/engine/engine/src/graphics/Renderer.cpp:2:
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0223241Z /usr/include/c++/13/bits/unique_ptr.h: In instantiation of ‘void std::default_delete<_Tp>::operator()(_Tp*) const [with _Tp = luminus::PostProcessor]’:
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0225646Z /usr/include/c++/13/bits/unique_ptr.h:404:17:   required from ‘std::unique_ptr<_Tp, _Dp>::~unique_ptr() [with _Tp = luminus::PostProcessor; _Dp = std::default_delete<luminus::PostProcessor>]’
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0227150Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:12:20:   required from here
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0228700Z /usr/include/c++/13/bits/unique_ptr.h:97:23: error: invalid application of ‘sizeof’ to incomplete type ‘luminus::PostProcessor’
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0229633Z    97 |         static_assert(sizeof(_Tp)>0,
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.0230062Z       |                       ^~~~~~~~~~~
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.3984950Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:160: CMakeFiles/luminus.dir/src/graphics/Renderer.cpp.o] Error 1
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.6562197Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:104: CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o] Error 1
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.6564542Z gmake[1]: *** [CMakeFiles/Makefile2:216: CMakeFiles/luminus.dir/all] Error 2
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.6567265Z gmake: *** [Makefile:156: all] Error 2
-Build on ubuntu-latest	Build	2026-07-29T19:56:44.6591388Z ##[error]Process completed with exit code 2.
-Build on windows-latest	Build	﻿2026-07-29T19:56:15.4376464Z ##[group]Run cmake --build build --config Release --parallel 4
-Build on windows-latest	Build	2026-07-29T19:56:15.4376992Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
-Build on windows-latest	Build	2026-07-29T19:56:15.4437994Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
-Build on windows-latest	Build	2026-07-29T19:56:15.4438341Z env:
-Build on windows-latest	Build	2026-07-29T19:56:15.4438520Z   CommandPromptType: Native
-Build on windows-latest	Build	2026-07-29T19:56:15.4439088Z   DevEnvDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\
-Build on windows-latest	Build	2026-07-29T19:56:15.4439602Z   ExtensionSdkDir: C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs
-Build on windows-latest	Build	2026-07-29T19:56:15.4442030Z   EXTERNAL_INCLUDE: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\VS\include;C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\include\um
-Build on windows-latest	Build	2026-07-29T19:56:15.4444416Z   Framework40Version: v4.0
-Build on windows-latest	Build	2026-07-29T19:56:15.4444692Z   FrameworkDir: C:\Windows\Microsoft.NET\Framework64\
-Build on windows-latest	Build	2026-07-29T19:56:15.4445026Z   FrameworkDir64: C:\Windows\Microsoft.NET\Framework64\
-Build on windows-latest	Build	2026-07-29T19:56:15.4445315Z   FrameworkVersion: v4.0.30319
-Build on windows-latest	Build	2026-07-29T19:56:15.4445539Z   FrameworkVersion64: v4.0.30319
-Build on windows-latest	Build	2026-07-29T19:56:15.4446044Z   FSHARPINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools
-Build on windows-latest	Build	2026-07-29T19:56:15.4446625Z   HTMLHelpDir: C:\Program Files (x86)\HTML Help Workshop
-Build on windows-latest	Build	2026-07-29T19:56:15.4448711Z   INCLUDE: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\VS\include;C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\include\um
-Build on windows-latest	Build	2026-07-29T19:56:15.4451734Z   LIB: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\lib\um\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64
-Build on windows-latest	Build	2026-07-29T19:56:15.4454168Z   LIBPATH: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x86\store\references;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.26100.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.26100.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319
-Build on windows-latest	Build	2026-07-29T19:56:15.4455815Z   llvmArm64: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\ARM64\bin
-Build on windows-latest	Build	2026-07-29T19:56:15.4456341Z   llvmX64: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\x64\bin
-Build on windows-latest	Build	2026-07-29T19:56:15.4456802Z   NETFXSDKDir: C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\
-Build on windows-latest	Build	2026-07-29T19:56:15.4470899Z   Path: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\x64\;C:\Program Files (x86)\HTML Help Workshop;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Team Tools\DiagnosticsHub\Collector;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\Extensions\Microsoft\CodeCoverage.Console;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x64;C:\Program Files (x86)\Windows Kits\10\bin\\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\Tools\;C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\R\R-4.6.1\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.24.13\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.11\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.19-10\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Installer;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\x64\bin;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\vcpkg
-Build on windows-latest	Build	2026-07-29T19:56:15.4487478Z   Platform: x64
-Build on windows-latest	Build	2026-07-29T19:56:15.4487692Z   UCRTVersion: 10.0.26100.0
-Build on windows-latest	Build	2026-07-29T19:56:15.4487993Z   UniversalCRTSdkDir: C:\Program Files (x86)\Windows Kits\10\
-Build on windows-latest	Build	2026-07-29T19:56:15.4488417Z   use_x64_llvm: true
-Build on windows-latest	Build	2026-07-29T19:56:15.4488775Z   VCIDEInstallDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\
-Build on windows-latest	Build	2026-07-29T19:56:15.4489286Z   VCINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\
-Build on windows-latest	Build	2026-07-29T19:56:15.4489750Z   VCPKG_ROOT: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\vcpkg
-Build on windows-latest	Build	2026-07-29T19:56:15.4490290Z   VCToolsInstallDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\
-Build on windows-latest	Build	2026-07-29T19:56:15.4490912Z   VCToolsRedistDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Redist\MSVC\14.51.36231\
-Build on windows-latest	Build	2026-07-29T19:56:15.4491363Z   VCToolsVersion: 14.51.36231
-Build on windows-latest	Build	2026-07-29T19:56:15.4491599Z   VisualStudioVersion: 18.0
-Build on windows-latest	Build	2026-07-29T19:56:15.4491955Z   VS180COMNTOOLS: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\Tools\
-Build on windows-latest	Build	2026-07-29T19:56:15.4492354Z   VSCMD_ARG_app_plat: Desktop
-Build on windows-latest	Build	2026-07-29T19:56:15.4492574Z   VSCMD_ARG_HOST_ARCH: x64
-Build on windows-latest	Build	2026-07-29T19:56:15.4492788Z   VSCMD_ARG_TGT_ARCH: x64
-Build on windows-latest	Build	2026-07-29T19:56:15.4492993Z   VSCMD_VER: 18.7.3
-Build on windows-latest	Build	2026-07-29T19:56:15.4493286Z   VSINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\
-Build on windows-latest	Build	2026-07-29T19:56:15.4493744Z   VSSDK150INSTALL: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK
-Build on windows-latest	Build	2026-07-29T19:56:15.4494209Z   VSSDKINSTALL: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK
-Build on windows-latest	Build	2026-07-29T19:56:15.4494868Z   WindowsLibPath: C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.26100.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.26100.0
-Build on windows-latest	Build	2026-07-29T19:56:15.4495492Z   WindowsSdkBinPath: C:\Program Files (x86)\Windows Kits\10\bin\
-Build on windows-latest	Build	2026-07-29T19:56:15.4495874Z   WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10\
-Build on windows-latest	Build	2026-07-29T19:56:15.4496173Z   WindowsSDKLibVersion: 10.0.26100.0\
-Build on windows-latest	Build	2026-07-29T19:56:15.4496528Z   WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\
-Build on windows-latest	Build	2026-07-29T19:56:15.4496895Z   WindowsSDKVersion: 10.0.26100.0\
-Build on windows-latest	Build	2026-07-29T19:56:15.4497336Z   WindowsSDK_ExecutablePath_x64: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\x64\
-Build on windows-latest	Build	2026-07-29T19:56:15.4497982Z   WindowsSDK_ExecutablePath_x86: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\
-Build on windows-latest	Build	2026-07-29T19:56:15.4498417Z   __DOTNET_ADD_64BIT: 1
-Build on windows-latest	Build	2026-07-29T19:56:15.4498627Z   __DOTNET_PREFERRED_BITNESS: 64
-Build on windows-latest	Build	2026-07-29T19:56:15.4507504Z   __VSCMD_PREINIT_PATH: C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\R\R-4.6.1\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.24.13\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.11\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.19-10\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Installer
-Build on windows-latest	Build	2026-07-29T19:56:15.4516442Z ##[endgroup]
-Build on windows-latest	Build	2026-07-29T19:56:15.7296067Z Warning: NMake does not support parallel builds. Ignoring parallel build command line option.
-Build on windows-latest	Build	2026-07-29T19:56:15.8495581Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:15.8875026Z context.c
-Build on windows-latest	Build	2026-07-29T19:56:17.3435813Z [  3%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:17.3796800Z init.c
-Build on windows-latest	Build	2026-07-29T19:56:17.6349072Z [  5%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:17.6685902Z input.c
-Build on windows-latest	Build	2026-07-29T19:56:17.9719418Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:18.0058511Z monitor.c
-Build on windows-latest	Build	2026-07-29T19:56:18.2346089Z [  8%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:18.2689084Z platform.c
-Build on windows-latest	Build	2026-07-29T19:56:18.4667240Z [ 10%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:18.5003113Z vulkan.c
-Build on windows-latest	Build	2026-07-29T19:56:18.7098841Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:18.7440593Z window.c
-Build on windows-latest	Build	2026-07-29T19:56:18.9798240Z [ 13%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:19.0155856Z egl_context.c
-Build on windows-latest	Build	2026-07-29T19:56:19.2635229Z [ 15%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:19.2981490Z osmesa_context.c
-Build on windows-latest	Build	2026-07-29T19:56:19.5170963Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:19.5523843Z null_init.c
-Build on windows-latest	Build	2026-07-29T19:56:19.7788797Z [ 18%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:19.8131647Z null_monitor.c
-Build on windows-latest	Build	2026-07-29T19:56:20.0175010Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:20.0517969Z null_window.c
-Build on windows-latest	Build	2026-07-29T19:56:20.2760119Z [ 21%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:20.3101458Z null_joystick.c
-Build on windows-latest	Build	2026-07-29T19:56:20.5026263Z [ 23%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:20.5369155Z win32_module.c
-Build on windows-latest	Build	2026-07-29T19:56:20.7302155Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:20.7648080Z win32_time.c
-Build on windows-latest	Build	2026-07-29T19:56:20.9583466Z [ 26%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:20.9933592Z win32_thread.c
-Build on windows-latest	Build	2026-07-29T19:56:21.1885463Z [ 28%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:21.2214392Z win32_init.c
-Build on windows-latest	Build	2026-07-29T19:56:21.4590032Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:21.4948116Z win32_joystick.c
-Build on windows-latest	Build	2026-07-29T19:56:21.7460289Z [ 31%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:21.7789550Z win32_monitor.c
-Build on windows-latest	Build	2026-07-29T19:56:22.1736244Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:22.2083901Z win32_window.c
-Build on windows-latest	Build	2026-07-29T19:56:22.5927725Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:22.6274390Z wgl_context.c
-Build on windows-latest	Build	2026-07-29T19:56:22.9085904Z [ 35%] Built target glfw
-Build on windows-latest	Build	2026-07-29T19:56:22.9656324Z [ 36%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:23.0004445Z raudio.c
-Build on windows-latest	Build	2026-07-29T19:56:28.1704081Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:28.2045465Z rcore.c
-Build on windows-latest	Build	2026-07-29T19:56:30.2331497Z [ 40%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:30.2696898Z rmodels.c
-Build on windows-latest	Build	2026-07-29T19:56:33.4599413Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:33.4943148Z rshapes.c
-Build on windows-latest	Build	2026-07-29T19:56:33.7326928Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:33.7703532Z rtext.c
-Build on windows-latest	Build	2026-07-29T19:56:34.4389622Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:34.4750505Z rtextures.c
-Build on windows-latest	Build	2026-07-29T19:56:36.4681837Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:36.5025381Z utils.c
-Build on windows-latest	Build	2026-07-29T19:56:36.6008239Z [ 48%] Linking C static library raylib.lib
-Build on windows-latest	Build	2026-07-29T19:56:36.7026903Z [ 48%] Built target raylib
-Build on windows-latest	Build	2026-07-29T19:56:36.7542169Z [ 50%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.obj
-Build on windows-latest	Build	2026-07-29T19:56:36.7883022Z raygui_impl.c
-Build on windows-latest	Build	2026-07-29T19:56:37.3157604Z [ 51%] Linking C static library raygui.lib
-Build on windows-latest	Build	2026-07-29T19:56:37.3769661Z [ 51%] Built target raygui
-Build on windows-latest	Build	2026-07-29T19:56:37.4341456Z [ 53%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.obj
-Build on windows-latest	Build	2026-07-29T19:56:37.4679486Z main.cpp
-Build on windows-latest	Build	2026-07-29T19:56:39.4362098Z D:\a\engine\engine\src\core/SceneManager.h(152): error C2039: 'alive': is not a member of 'entt::basic_registry<entt::entity,std::allocator<Entity>>'
-Build on windows-latest	Build	2026-07-29T19:56:39.4363513Z         with
-Build on windows-latest	Build	2026-07-29T19:56:39.4363979Z         [
-Build on windows-latest	Build	2026-07-29T19:56:39.4364411Z             Entity=entt::entity
-Build on windows-latest	Build	2026-07-29T19:56:39.4364874Z         ]
-Build on windows-latest	Build	2026-07-29T19:56:39.4365902Z D:\a\engine\engine\build\_deps\entt-src\src\entt\entity/registry.hpp(233): note: see declaration of 'entt::basic_registry<entt::entity,std::allocator<Entity>>'
-Build on windows-latest	Build	2026-07-29T19:56:39.4367085Z         with
-Build on windows-latest	Build	2026-07-29T19:56:39.4367461Z         [
-Build on windows-latest	Build	2026-07-29T19:56:39.4367858Z             Entity=entt::entity
-Build on windows-latest	Build	2026-07-29T19:56:39.4368311Z         ]
-Build on windows-latest	Build	2026-07-29T19:56:40.3443592Z NMAKE : fatal error U1077: 'C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\luminus.dir\src\main.cpp.obj.d --working-dir=D:\a\engine\engine\build --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\ENTERP~1\VC\Tools\MSVC\1451~1.362\bin\Hostx64\x64\cl.exe @C:\Users\RUNNER~1\AppData\Local\Temp\nm47E2.tmp' : return code '0x2'
-Build on windows-latest	Build	2026-07-29T19:56:40.3446285Z Stop.
-Build on windows-latest	Build	2026-07-29T19:56:40.3465170Z NMAKE : fatal error U1077: '"C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\nmake.exe" -s -f CMakeFiles\luminus.dir\build.make /nologo -SL                 CMakeFiles\luminus.dir\build' : return code '0x2'
-Build on windows-latest	Build	2026-07-29T19:56:40.3466485Z Stop.
-Build on windows-latest	Build	2026-07-29T19:56:40.3485227Z NMAKE : fatal error U1077: '"C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\nmake.exe" -s -f CMakeFiles\Makefile2 /nologo -LS                 all' : return code '0x2'
-Build on windows-latest	Build	2026-07-29T19:56:40.3486048Z Stop.
-Build on windows-latest	Build	2026-07-29T19:56:40.4594060Z ##[error]Process completed with exit code 1.
-Build on macos-latest	Build	﻿2026-07-29T19:56:04.2225950Z ##[group]Run cmake --build build --config Release --parallel 4
-Build on macos-latest	Build	2026-07-29T19:56:04.2226590Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
-Build on macos-latest	Build	2026-07-29T19:56:04.2459210Z shell: /bin/bash -e {0}
-Build on macos-latest	Build	2026-07-29T19:56:04.2459870Z ##[endgroup]
-Build on macos-latest	Build	2026-07-29T19:56:04.4094000Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
-Build on macos-latest	Build	2026-07-29T19:56:04.4199440Z [  3%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
-Build on macos-latest	Build	2026-07-29T19:56:04.4268400Z [  5%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
-Build on macos-latest	Build	2026-07-29T19:56:04.4269600Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
-Build on macos-latest	Build	2026-07-29T19:56:06.2410830Z [  8%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
-Build on macos-latest	Build	2026-07-29T19:56:06.2538810Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
-Build on macos-latest	Build	2026-07-29T19:56:06.2643200Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
-Build on macos-latest	Build	2026-07-29T19:56:06.4190990Z [ 13%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.0054790Z [ 15%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.1992070Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.3000260Z [ 18%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.3810110Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.6440020Z [ 21%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.6959160Z [ 23%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.7061750Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
-Build on macos-latest	Build	2026-07-29T19:56:07.9095740Z [ 26%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
-Build on macos-latest	Build	2026-07-29T19:56:08.1050800Z [ 28%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o
-Build on macos-latest	Build	2026-07-29T19:56:08.1153790Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o
-Build on macos-latest	Build	2026-07-29T19:56:08.1257920Z [ 31%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o
-Build on macos-latest	Build	2026-07-29T19:56:08.3760910Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o
-Build on macos-latest	Build	2026-07-29T19:56:09.5736230Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
-Build on macos-latest	Build	2026-07-29T19:56:10.1677750Z [ 35%] Built target glfw
-Build on macos-latest	Build	2026-07-29T19:56:10.2058620Z [ 36%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
-Build on macos-latest	Build	2026-07-29T19:56:10.2159400Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
-Build on macos-latest	Build	2026-07-29T19:56:10.2270650Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
-Build on macos-latest	Build	2026-07-29T19:56:10.2379880Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
-Build on macos-latest	Build	2026-07-29T19:56:10.5848900Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
-Build on macos-latest	Build	2026-07-29T19:56:10.7547070Z In file included from /Users/runner/work/engine/engine/build/_deps/raylib-src/src/raudio.c:218:
-Build on macos-latest	Build	2026-07-29T19:56:10.7649110Z /Users/runner/work/engine/engine/build/_deps/raylib-src/src/external/stb_vorbis.c:1404:75: warning: pointer comparison always evaluates to false [-Wtautological-compare]
-Build on macos-latest	Build	2026-07-29T19:56:10.7748940Z  1404 |       if (f->stream_start + loc >= f->stream_end || f->stream_start + loc < f->stream_start) {
-Build on macos-latest	Build	2026-07-29T19:56:10.7851430Z       |                                                                           ^
-Build on macos-latest	Build	2026-07-29T19:56:11.7996690Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
-Build on macos-latest	Build	2026-07-29T19:56:12.8586700Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
-Build on macos-latest	Build	2026-07-29T19:56:16.6591440Z 1 warning generated.
-Build on macos-latest	Build	2026-07-29T19:56:16.6891790Z [ 48%] Linking C static library libraylib.a
-Build on macos-latest	Build	2026-07-29T19:56:16.7763340Z [ 48%] Built target raylib
-Build on macos-latest	Build	2026-07-29T19:56:16.8169860Z [ 50%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.o
-Build on macos-latest	Build	2026-07-29T19:56:17.5153070Z [ 51%] Linking C static library libraygui.a
-Build on macos-latest	Build	2026-07-29T19:56:17.5710850Z [ 51%] Built target raygui
-Build on macos-latest	Build	2026-07-29T19:56:17.6444990Z [ 55%] Building CXX object CMakeFiles/luminus.dir/src/core/Engine.cpp.o
-Build on macos-latest	Build	2026-07-29T19:56:17.6484810Z [ 53%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.o
-Build on macos-latest	Build	2026-07-29T19:56:17.6595130Z [ 56%] Building CXX object CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o
-Build on macos-latest	Build	2026-07-29T19:56:17.6754560Z [ 58%] Building CXX object CMakeFiles/luminus.dir/src/core/Window.cpp.o
-Build on macos-latest	Build	2026-07-29T19:56:19.3568760Z In file included from /Users/runner/work/engine/engine/src/main.cpp:3:
-Build on macos-latest	Build	2026-07-29T19:56:19.3670300Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
-Build on macos-latest	Build	2026-07-29T19:56:19.3771190Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
-Build on macos-latest	Build	2026-07-29T19:56:19.3872400Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
-Build on macos-latest	Build	2026-07-29T19:56:19.3973360Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
-Build on macos-latest	Build	2026-07-29T19:56:19.4074180Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.4176190Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.4259690Z       |                                       ~~~~~~~~~~~^~~
-Build on macos-latest	Build	2026-07-29T19:56:19.4262770Z       |                                       operator""_hs
-Build on macos-latest	Build	2026-07-29T19:56:19.4263760Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.4267590Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.4268190Z       |                                        ~~~~~~~~~~~^~~~
-Build on macos-latest	Build	2026-07-29T19:56:19.4269320Z       |                                        operator""_hws
-Build on macos-latest	Build	2026-07-29T19:56:19.4271110Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.cpp:2:
-Build on macos-latest	Build	2026-07-29T19:56:19.4271870Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
-Build on macos-latest	Build	2026-07-29T19:56:19.4272690Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
-Build on macos-latest	Build	2026-07-29T19:56:19.4375270Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
-Build on macos-latest	Build	2026-07-29T19:56:19.4477430Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
-Build on macos-latest	Build	2026-07-29T19:56:19.4579610Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.4682110Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.4785300Z       |                                       ~~~~~~~~~~~^~~
-Build on macos-latest	Build	2026-07-29T19:56:19.4910230Z       |                                       operator""_hs
-Build on macos-latest	Build	2026-07-29T19:56:19.5040860Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.5161020Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.5273010Z       |                                        ~~~~~~~~~~~^~~~
-Build on macos-latest	Build	2026-07-29T19:56:19.5382040Z       |                                        operator""_hws
-Build on macos-latest	Build	2026-07-29T19:56:19.5527990Z In file included from /Users/runner/work/engine/engine/src/core/Engine.cpp:6:
-Build on macos-latest	Build	2026-07-29T19:56:19.5664960Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
-Build on macos-latest	Build	2026-07-29T19:56:19.5788580Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
-Build on macos-latest	Build	2026-07-29T19:56:19.5899430Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
-Build on macos-latest	Build	2026-07-29T19:56:19.6020840Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
-Build on macos-latest	Build	2026-07-29T19:56:19.6122760Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.6225620Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.6328010Z       |                                       ~~~~~~~~~~~^~~
-Build on macos-latest	Build	2026-07-29T19:56:19.6430380Z       |                                       operator""_hs
-Build on macos-latest	Build	2026-07-29T19:56:19.6534400Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
-Build on macos-latest	Build	2026-07-29T19:56:19.6639070Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
-Build on macos-latest	Build	2026-07-29T19:56:19.6741290Z       |                                        ~~~~~~~~~~~^~~~
-Build on macos-latest	Build	2026-07-29T19:56:19.6843880Z       |                                        operator""_hws
-Build on macos-latest	Build	2026-07-29T19:56:19.7376690Z [ 60%] Building CXX object CMakeFiles/luminus.dir/src/core/Input.cpp.o
-Build on macos-latest	Build	2026-07-29T19:56:19.8329410Z In file included from /Users/runner/work/engine/engine/src/main.cpp:3:
-Build on macos-latest	Build	2026-07-29T19:56:19.8452840Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'alive' in 'entt::basic_registry<>'
-Build on macos-latest	Build	2026-07-29T19:56:19.8454690Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on macos-latest	Build	2026-07-29T19:56:19.8576740Z       |                                            ~~~~~~~~~~ ^
-Build on macos-latest	Build	2026-07-29T19:56:19.8577570Z In file included from /Users/runner/work/engine/engine/src/core/Engine.cpp:6:
-Build on macos-latest	Build	2026-07-29T19:56:19.8679640Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'alive' in 'entt::basic_registry<>'
-Build on macos-latest	Build	2026-07-29T19:56:19.8777890Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on macos-latest	Build	2026-07-29T19:56:19.8879010Z       |                                            ~~~~~~~~~~ ^
-Build on macos-latest	Build	2026-07-29T19:56:19.8980280Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.cpp:2:
-Build on macos-latest	Build	2026-07-29T19:56:19.9081200Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'alive' in 'entt::basic_registry<>'
-Build on macos-latest	Build	2026-07-29T19:56:19.9182020Z   152 |     size_t GetEntityCount() const { return m_Registry.alive(); }
-Build on macos-latest	Build	2026-07-29T19:56:19.9282920Z       |                                            ~~~~~~~~~~ ^
-Build on macos-latest	Build	2026-07-29T19:56:20.2395340Z 2 warnings and 1 error generated.
-Build on macos-latest	Build	2026-07-29T19:56:20.2397370Z make[2]: *** [CMakeFiles/luminus.dir/src/main.cpp.o] Error 1
-Build on macos-latest	Build	2026-07-29T19:56:20.2553340Z make[2]: *** Waiting for unfinished jobs....
-Build on macos-latest	Build	2026-07-29T19:56:20.3069100Z /Users/runner/work/engine/engine/src/core/SceneManager.cpp:64:16: error: no member named 'each' in 'entt::basic_registry<>'
-Build on macos-latest	Build	2026-07-29T19:56:20.3098560Z    64 |     m_Registry.each(fn);
-Build on macos-latest	Build	2026-07-29T19:56:20.3099110Z       |     ~~~~~~~~~~ ^
-Build on macos-latest	Build	2026-07-29T19:56:20.5965250Z 2 warnings and 1 error generated.
-Build on macos-latest	Build	2026-07-29T19:56:20.6067400Z make[2]: *** [CMakeFiles/luminus.dir/src/core/Engine.cpp.o] Error 1
-Build on macos-latest	Build	2026-07-29T19:56:21.2913830Z 2 warnings and 2 errors generated.
-Build on macos-latest	Build	2026-07-29T19:56:21.2958460Z make[2]: *** [CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o] Error 1
-Build on macos-latest	Build	2026-07-29T19:56:21.2960710Z make[1]: *** [CMakeFiles/luminus.dir/all] Error 2
-Build on macos-latest	Build	2026-07-29T19:56:21.2966230Z make: *** [all] Error 2
-Build on macos-latest	Build	2026-07-29T19:56:21.3061650Z ##[error]Process completed with exit code 2.
+Build on ubuntu-latest	Build	﻿2026-07-29T20:01:49.3033495Z ##[group]Run cmake --build build --config Release --parallel 4
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3033973Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3076869Z shell: /usr/bin/bash -e {0}
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3077114Z ##[endgroup]
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3315872Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3318792Z [  3%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3320090Z [  4%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.3321581Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.6152443Z [  8%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.6326806Z [  9%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.6551911Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.7121559Z [ 12%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.7691512Z [ 14%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.9190133Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.9251621Z [ 17%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.9592226Z [ 19%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:49.9821814Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.0413655Z [ 22%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.0554250Z [ 24%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.0746259Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.1231441Z [ 27%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.1501674Z [ 29%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.1621391Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.1721631Z [ 32%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.2591754Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.4451600Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.4936484Z [ 37%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.9198830Z [ 37%] Built target glfw
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.9277783Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.9279176Z [ 40%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.9281529Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:50.9285127Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:51.8371539Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0581832Z In file included from /home/runner/work/engine/engine/build/_deps/raylib-src/src/raudio.c:282:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0611771Z In function ‘memcopy’,
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0641789Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0651578Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0670925Z   370 |         d[i]=s[i];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0671609Z       |         ~~~~^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0711476Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0741714Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1080 into destination object ‘title’ of size 20
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0760870Z   125 |     muchar  title[20];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0770913Z       |             ^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0800970Z In function ‘memcopy’,
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0821677Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0823658Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0860770Z   370 |         d[i]=s[i];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0890706Z       |         ~~~~^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0911525Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0913422Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1081 into destination object ‘title’ of size 20
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0950739Z   125 |     muchar  title[20];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0976974Z       |             ^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.0980847Z In function ‘memcopy’,
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1031477Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1061431Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1090819Z   370 |         d[i]=s[i];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1120737Z       |         ~~~~^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1151511Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1181696Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1082 into destination object ‘title’ of size 20
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1210713Z   125 |     muchar  title[20];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1240731Z       |             ^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1270843Z In function ‘memcopy’,
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1301441Z     inlined from ‘jar_mod_load’ at /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:1133:13:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1331437Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:370:13: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1360726Z   370 |         d[i]=s[i];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1390716Z       |         ~~~~^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1421456Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h: In function ‘jar_mod_load’:
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1451679Z /home/runner/work/engine/engine/build/_deps/raylib-src/src/external/jar_mod.h:125:13: note: at offset 1083 into destination object ‘title’ of size 20
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1480700Z   125 |     muchar  title[20];
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.1510705Z       |             ^~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:01:54.4881576Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:01:56.5971876Z [ 48%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:09.3946069Z [ 50%] Linking C static library libraylib.a
+Build on ubuntu-latest	Build	2026-07-29T20:02:16.0193708Z [ 50%] Built target raylib
+Build on ubuntu-latest	Build	2026-07-29T20:02:16.0257855Z [ 51%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.5169630Z [ 53%] Linking C static library libraygui.a
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.5966956Z [ 53%] Built target raygui
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.6047285Z [ 54%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.6048421Z [ 56%] Building CXX object CMakeFiles/luminus.dir/src/core/Engine.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.6052007Z [ 58%] Building CXX object CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:17.6056050Z [ 59%] Building CXX object CMakeFiles/luminus.dir/src/core/Window.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.7581414Z [ 61%] Building CXX object CMakeFiles/luminus.dir/src/core/Input.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8881789Z In file included from /home/runner/work/engine/engine/src/core/Engine.cpp:6:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8898353Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8922073Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘size’
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8941070Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8950793Z       |                                                       ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.8980902Z In file included from /home/runner/work/engine/engine/src/main.cpp:3:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9001822Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9032013Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘size’
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9041036Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9060884Z       |                                                       ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9091109Z In file included from /home/runner/work/engine/engine/src/core/SceneManager.cpp:2:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9121634Z /home/runner/work/engine/engine/src/core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9123551Z /home/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘size’
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9124867Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9125492Z       |                                                       ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9811453Z In file included from /home/runner/work/engine/engine/src/core/../graphics/Renderer.h:5,
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9831144Z                  from /home/runner/work/engine/engine/src/core/Engine.cpp:9:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9832382Z /home/runner/work/engine/engine/src/core/../graphics/PostProcessor.h: At global scope:
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9862264Z /home/runner/work/engine/engine/src/core/../graphics/PostProcessor.h:39:35: error: redeclaration of ‘float luminus::PostProcessor::m_ChromaticAberration’
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9890919Z    39 |     float m_ChromaticAberration = 0.5f;
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9920925Z       |                                   ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9923026Z /home/runner/work/engine/engine/src/core/../graphics/PostProcessor.h:33:10: note: previous declaration ‘bool luminus::PostProcessor::m_ChromaticAberration’
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9950888Z    33 |     bool m_ChromaticAberration = false;
+Build on ubuntu-latest	Build	2026-07-29T20:02:18.9980764Z       |          ^~~~~~~~~~~~~~~~~~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.1350680Z [ 62%] Building CXX object CMakeFiles/luminus.dir/src/core/Time.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.2650747Z [ 64%] Building CXX object CMakeFiles/luminus.dir/src/graphics/Renderer.cpp.o
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3732396Z /home/runner/work/engine/engine/src/core/SceneManager.cpp: In member function ‘void luminus::Scene::ForEachEntity(std::function<void(entt::entity)>)’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3762306Z /home/runner/work/engine/engine/src/core/SceneManager.cpp:64:16: error: ‘using entt::registry = class entt::basic_registry<>’ {aka ‘class entt::basic_registry<>’} has no member named ‘each’
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3764364Z    64 |     m_Registry.each([&fn](auto entity) { fn(entity); });
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3764909Z       |                ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3971461Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:76: CMakeFiles/luminus.dir/src/main.cpp.o] Error 1
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.3982553Z gmake[2]: *** Waiting for unfinished jobs....
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6085079Z In file included from /home/runner/work/engine/engine/src/graphics/Renderer.h:5,
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6086453Z                  from /home/runner/work/engine/engine/src/graphics/Renderer.cpp:2:
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6088764Z /home/runner/work/engine/engine/src/graphics/PostProcessor.h:39:35: error: redeclaration of ‘float luminus::PostProcessor::m_ChromaticAberration’
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6091866Z    39 |     float m_ChromaticAberration = 0.5f;
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6111525Z       |                                   ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6113480Z /home/runner/work/engine/engine/src/graphics/PostProcessor.h:33:10: note: previous declaration ‘bool luminus::PostProcessor::m_ChromaticAberration’
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6114955Z    33 |     bool m_ChromaticAberration = false;
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.6115683Z       |          ^~~~~~~~~~~~~~~~~~~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:19.7908818Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:90: CMakeFiles/luminus.dir/src/core/Engine.cpp.o] Error 1
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.1166581Z In file included from /home/runner/work/engine/engine/src/graphics/Renderer.cpp:3:
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.1168598Z /home/runner/work/engine/engine/src/graphics/../core/SceneManager.h: In member function ‘size_t luminus::Scene::GetEntityCount() const’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.1171161Z /home/runner/work/engine/engine/src/graphics/../core/SceneManager.h:152:55: error: ‘const entt::registry’ {aka ‘const class entt::basic_registry<>’} has no member named ‘size’
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.1172657Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.1173344Z       |                                                       ^~~~
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2389846Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp: In member function ‘void luminus::Renderer::DrawCube3D(Vector3, Vector3, Color)’:
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2393234Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:46: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::r)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2395274Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2396188Z       |                                       ~~~~~~~^~
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2398382Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:57: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::g)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2400010Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2400960Z       |                                                  ~~~~~~~^~
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2402942Z /home/runner/work/engine/engine/src/graphics/Renderer.cpp:252:68: warning: narrowing conversion of ‘(int)(((unsigned char)((int)color.Color::b)) / 2)’ from ‘int’ to ‘unsigned char’ [-Wnarrowing]
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2404534Z   252 |     ::DrawCubeWiresV(pos, size, Color{color.r/2, color.g/2, color.b/2, 255});
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.2405305Z       |                                                             ~~~~~~~^~
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.7294217Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:160: CMakeFiles/luminus.dir/src/graphics/Renderer.cpp.o] Error 1
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.8594397Z gmake[2]: *** [CMakeFiles/luminus.dir/build.make:104: CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o] Error 1
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.8596426Z gmake[1]: *** [CMakeFiles/Makefile2:216: CMakeFiles/luminus.dir/all] Error 2
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.8599332Z gmake: *** [Makefile:156: all] Error 2
+Build on ubuntu-latest	Build	2026-07-29T20:02:20.8622802Z ##[error]Process completed with exit code 2.
+Build on macos-latest	Build	﻿2026-07-29T20:01:49.1123200Z ##[group]Run cmake --build build --config Release --parallel 4
+Build on macos-latest	Build	2026-07-29T20:01:49.1123820Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
+Build on macos-latest	Build	2026-07-29T20:01:49.1172960Z shell: /bin/bash -e {0}
+Build on macos-latest	Build	2026-07-29T20:01:49.1173180Z ##[endgroup]
+Build on macos-latest	Build	2026-07-29T20:01:49.2076130Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
+Build on macos-latest	Build	2026-07-29T20:01:49.2077450Z [  5%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
+Build on macos-latest	Build	2026-07-29T20:01:49.2091480Z [  5%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
+Build on macos-latest	Build	2026-07-29T20:01:49.2109800Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.3014550Z [ 10%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.3036290Z [ 10%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.3064590Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.4267760Z [ 13%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.6539640Z [ 15%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.6675420Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.7378120Z [ 18%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.7852940Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.9914860Z [ 21%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
+Build on macos-latest	Build	2026-07-29T20:01:50.9983890Z [ 23%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o
+Build on macos-latest	Build	2026-07-29T20:01:51.0661310Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
+Build on macos-latest	Build	2026-07-29T20:01:51.2925940Z [ 26%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
+Build on macos-latest	Build	2026-07-29T20:01:51.4083680Z [ 28%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o
+Build on macos-latest	Build	2026-07-29T20:01:51.4636610Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o
+Build on macos-latest	Build	2026-07-29T20:01:51.5460000Z [ 31%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o
+Build on macos-latest	Build	2026-07-29T20:01:51.7088490Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o
+Build on macos-latest	Build	2026-07-29T20:01:52.3573240Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
+Build on macos-latest	Build	2026-07-29T20:01:52.8472410Z [ 35%] Built target glfw
+Build on macos-latest	Build	2026-07-29T20:01:52.8743050Z [ 36%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
+Build on macos-latest	Build	2026-07-29T20:01:52.8744620Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
+Build on macos-latest	Build	2026-07-29T20:01:52.8745500Z [ 40%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
+Build on macos-latest	Build	2026-07-29T20:01:52.8770870Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
+Build on macos-latest	Build	2026-07-29T20:01:53.1915900Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
+Build on macos-latest	Build	2026-07-29T20:01:53.3361930Z In file included from /Users/runner/work/engine/engine/build/_deps/raylib-src/src/raudio.c:218:
+Build on macos-latest	Build	2026-07-29T20:01:53.3464300Z /Users/runner/work/engine/engine/build/_deps/raylib-src/src/external/stb_vorbis.c:1404:75: warning: pointer comparison always evaluates to false [-Wtautological-compare]
+Build on macos-latest	Build	2026-07-29T20:01:53.3564320Z  1404 |       if (f->stream_start + loc >= f->stream_end || f->stream_start + loc < f->stream_start) {
+Build on macos-latest	Build	2026-07-29T20:01:53.3666400Z       |                                                                           ^
+Build on macos-latest	Build	2026-07-29T20:01:54.3132740Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
+Build on macos-latest	Build	2026-07-29T20:01:55.3799800Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
+Build on macos-latest	Build	2026-07-29T20:01:58.3888230Z 1 warning generated.
+Build on macos-latest	Build	2026-07-29T20:01:58.4029040Z [ 48%] Linking C static library libraylib.a
+Build on macos-latest	Build	2026-07-29T20:01:58.4715670Z [ 48%] Built target raylib
+Build on macos-latest	Build	2026-07-29T20:01:58.4943970Z [ 50%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.o
+Build on macos-latest	Build	2026-07-29T20:01:58.9209790Z [ 51%] Linking C static library libraygui.a
+Build on macos-latest	Build	2026-07-29T20:01:58.9545200Z [ 51%] Built target raygui
+Build on macos-latest	Build	2026-07-29T20:01:58.9808110Z [ 53%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.o
+Build on macos-latest	Build	2026-07-29T20:01:58.9809830Z [ 55%] Building CXX object CMakeFiles/luminus.dir/src/core/Engine.cpp.o
+Build on macos-latest	Build	2026-07-29T20:01:58.9810650Z [ 56%] Building CXX object CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o
+Build on macos-latest	Build	2026-07-29T20:01:58.9864840Z [ 58%] Building CXX object CMakeFiles/luminus.dir/src/core/Window.cpp.o
+Build on macos-latest	Build	2026-07-29T20:01:59.6335910Z In file included from /Users/runner/work/engine/engine/src/core/Engine.cpp:6:
+Build on macos-latest	Build	2026-07-29T20:01:59.6437200Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
+Build on macos-latest	Build	2026-07-29T20:01:59.6538210Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
+Build on macos-latest	Build	2026-07-29T20:01:59.6638800Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
+Build on macos-latest	Build	2026-07-29T20:01:59.6739330Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
+Build on macos-latest	Build	2026-07-29T20:01:59.6840770Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.6945860Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:01:59.7041530Z       |                                       ~~~~~~~~~~~^~~
+Build on macos-latest	Build	2026-07-29T20:01:59.7143340Z       |                                       operator""_hs
+Build on macos-latest	Build	2026-07-29T20:01:59.7244070Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.7344380Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:01:59.7445940Z       |                                        ~~~~~~~~~~~^~~~
+Build on macos-latest	Build	2026-07-29T20:01:59.7547170Z       |                                        operator""_hws
+Build on macos-latest	Build	2026-07-29T20:01:59.7648840Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.cpp:2:
+Build on macos-latest	Build	2026-07-29T20:01:59.7748850Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
+Build on macos-latest	Build	2026-07-29T20:01:59.7850740Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
+Build on macos-latest	Build	2026-07-29T20:01:59.7951610Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
+Build on macos-latest	Build	2026-07-29T20:01:59.8111830Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
+Build on macos-latest	Build	2026-07-29T20:01:59.8113020Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.8214890Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:01:59.8316370Z       |                                       ~~~~~~~~~~~^~~
+Build on macos-latest	Build	2026-07-29T20:01:59.8417590Z       |                                       operator""_hs
+Build on macos-latest	Build	2026-07-29T20:01:59.8519290Z In file included from /Users/runner/work/engine/engine/src/main.cpp:3:
+Build on macos-latest	Build	2026-07-29T20:01:59.8620550Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.h:3:
+Build on macos-latest	Build	2026-07-29T20:01:59.8714140Z [ 60%] Building CXX object CMakeFiles/luminus.dir/src/core/Input.cpp.o
+Build on macos-latest	Build	2026-07-29T20:01:59.8714750Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/entt.hpp:8:
+Build on macos-latest	Build	2026-07-29T20:01:59.8816070Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/any.hpp:11:
+Build on macos-latest	Build	2026-07-29T20:01:59.8917400Z In file included from /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/type_info.hpp:10:
+Build on macos-latest	Build	2026-07-29T20:01:59.9019420Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:309:50: warning: identifier '_hs' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.9122230Z   309 | [[nodiscard]] constexpr hashed_string operator"" _hs(const char *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:01:59.9223110Z       |                                       ~~~~~~~~~~~^~~
+Build on macos-latest	Build	2026-07-29T20:01:59.9323880Z       |                                       operator""_hs
+Build on macos-latest	Build	2026-07-29T20:01:59.9425250Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.9525440Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:01:59.9627690Z       |                                        ~~~~~~~~~~~^~~~
+Build on macos-latest	Build	2026-07-29T20:01:59.9728680Z       |                                        operator""_hws
+Build on macos-latest	Build	2026-07-29T20:01:59.9830280Z /Users/runner/work/engine/engine/build/_deps/entt-src/src/entt/core/hashed_string.hpp:318:51: warning: identifier '_hws' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+Build on macos-latest	Build	2026-07-29T20:01:59.9930280Z   318 | [[nodiscard]] constexpr hashed_wstring operator"" _hws(const wchar_t *str, std::size_t) noexcept {
+Build on macos-latest	Build	2026-07-29T20:02:00.0031600Z       |                                        ~~~~~~~~~~~^~~~
+Build on macos-latest	Build	2026-07-29T20:02:00.0132670Z       |                                        operator""_hws
+Build on macos-latest	Build	2026-07-29T20:02:00.0230930Z In file included from /Users/runner/work/engine/engine/src/core/Engine.cpp:6:
+Build on macos-latest	Build	2026-07-29T20:02:00.0333120Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'size' in 'entt::basic_registry<>'
+Build on macos-latest	Build	2026-07-29T20:02:00.0435120Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on macos-latest	Build	2026-07-29T20:02:00.0531460Z       |                                            ~~~~~~~~~~ ^
+Build on macos-latest	Build	2026-07-29T20:02:00.0632720Z In file included from /Users/runner/work/engine/engine/src/core/SceneManager.cpp:2:
+Build on macos-latest	Build	2026-07-29T20:02:00.0693470Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'size' in 'entt::basic_registry<>'
+Build on macos-latest	Build	2026-07-29T20:02:00.0694120Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on macos-latest	Build	2026-07-29T20:02:00.0694450Z       |                                            ~~~~~~~~~~ ^
+Build on macos-latest	Build	2026-07-29T20:02:00.0694940Z In file included from /Users/runner/work/engine/engine/src/main.cpp:3:
+Build on macos-latest	Build	2026-07-29T20:02:00.0696640Z /Users/runner/work/engine/engine/src/core/SceneManager.h:152:55: error: no member named 'size' in 'entt::basic_registry<>'
+Build on macos-latest	Build	2026-07-29T20:02:00.0697590Z   152 |     size_t GetEntityCount() const { return m_Registry.size(); }
+Build on macos-latest	Build	2026-07-29T20:02:00.0698160Z       |                                            ~~~~~~~~~~ ^
+Build on macos-latest	Build	2026-07-29T20:02:00.0698640Z In file included from /Users/runner/work/engine/engine/src/core/Engine.cpp:9:
+Build on macos-latest	Build	2026-07-29T20:02:00.0699550Z In file included from /Users/runner/work/engine/engine/src/core/../graphics/Renderer.h:5:
+Build on macos-latest	Build	2026-07-29T20:02:00.0700200Z /Users/runner/work/engine/engine/src/core/../graphics/PostProcessor.h:39:11: error: duplicate member 'm_ChromaticAberration'
+Build on macos-latest	Build	2026-07-29T20:02:00.0702530Z    39 |     float m_ChromaticAberration = 0.5f;
+Build on macos-latest	Build	2026-07-29T20:02:00.0702950Z       |           ^
+Build on macos-latest	Build	2026-07-29T20:02:00.0703360Z /Users/runner/work/engine/engine/src/core/../graphics/PostProcessor.h:33:10: note: previous declaration is here
+Build on macos-latest	Build	2026-07-29T20:02:00.0703890Z    33 |     bool m_ChromaticAberration = false;
+Build on macos-latest	Build	2026-07-29T20:02:00.0704130Z       |          ^
+Build on macos-latest	Build	2026-07-29T20:02:00.2391630Z [ 61%] Building CXX object CMakeFiles/luminus.dir/src/core/Time.cpp.o
+Build on macos-latest	Build	2026-07-29T20:02:00.2793070Z 2 warnings and 1 error generated.
+Build on macos-latest	Build	2026-07-29T20:02:00.2893670Z make[2]: *** [CMakeFiles/luminus.dir/src/main.cpp.o] Error 1
+Build on macos-latest	Build	2026-07-29T20:02:00.2900410Z make[2]: *** Waiting for unfinished jobs....
+Build on macos-latest	Build	2026-07-29T20:02:00.2935480Z /Users/runner/work/engine/engine/src/core/SceneManager.cpp:64:16: error: no member named 'each' in 'entt::basic_registry<>'
+Build on macos-latest	Build	2026-07-29T20:02:00.3009980Z    64 |     m_Registry.each([&fn](auto entity) { fn(entity); });
+Build on macos-latest	Build	2026-07-29T20:02:00.3111010Z       |     ~~~~~~~~~~ ^
+Build on macos-latest	Build	2026-07-29T20:02:00.5345650Z 2 warnings and 2 errors generated.
+Build on macos-latest	Build	2026-07-29T20:02:00.5410850Z make[2]: *** [CMakeFiles/luminus.dir/src/core/Engine.cpp.o] Error 1
+Build on macos-latest	Build	2026-07-29T20:02:01.0952540Z 2 warnings and 2 errors generated.
+Build on macos-latest	Build	2026-07-29T20:02:01.0986330Z make[2]: *** [CMakeFiles/luminus.dir/src/core/SceneManager.cpp.o] Error 1
+Build on macos-latest	Build	2026-07-29T20:02:01.0988220Z make[1]: *** [CMakeFiles/luminus.dir/all] Error 2
+Build on macos-latest	Build	2026-07-29T20:02:01.0990920Z make: *** [all] Error 2
+Build on macos-latest	Build	2026-07-29T20:02:01.1012990Z ##[error]Process completed with exit code 2.
+Build on windows-latest	Build	﻿2026-07-29T20:02:13.5374661Z ##[group]Run cmake --build build --config Release --parallel 4
+Build on windows-latest	Build	2026-07-29T20:02:13.5375176Z ^[[36;1mcmake --build build --config Release --parallel 4^[[0m
+Build on windows-latest	Build	2026-07-29T20:02:13.5434626Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build on windows-latest	Build	2026-07-29T20:02:13.5434977Z env:
+Build on windows-latest	Build	2026-07-29T20:02:13.5435148Z   CommandPromptType: Native
+Build on windows-latest	Build	2026-07-29T20:02:13.5435637Z   DevEnvDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\
+Build on windows-latest	Build	2026-07-29T20:02:13.5436156Z   ExtensionSdkDir: C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs
+Build on windows-latest	Build	2026-07-29T20:02:13.5438507Z   EXTERNAL_INCLUDE: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\VS\include;C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\include\um
+Build on windows-latest	Build	2026-07-29T20:02:13.5440748Z   Framework40Version: v4.0
+Build on windows-latest	Build	2026-07-29T20:02:13.5441007Z   FrameworkDir: C:\Windows\Microsoft.NET\Framework64\
+Build on windows-latest	Build	2026-07-29T20:02:13.5441335Z   FrameworkDir64: C:\Windows\Microsoft.NET\Framework64\
+Build on windows-latest	Build	2026-07-29T20:02:13.5441753Z   FrameworkVersion: v4.0.30319
+Build on windows-latest	Build	2026-07-29T20:02:13.5442143Z   FrameworkVersion64: v4.0.30319
+Build on windows-latest	Build	2026-07-29T20:02:13.5443182Z   FSHARPINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools
+Build on windows-latest	Build	2026-07-29T20:02:13.5444244Z   HTMLHelpDir: C:\Program Files (x86)\HTML Help Workshop
+Build on windows-latest	Build	2026-07-29T20:02:13.5446490Z   INCLUDE: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\include;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\VS\include;C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt;C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\include\um
+Build on windows-latest	Build	2026-07-29T20:02:13.5449664Z   LIB: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\lib\um\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.26100.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64
+Build on windows-latest	Build	2026-07-29T20:02:13.5452262Z   LIBPATH: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\ATLMFC\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\lib\x86\store\references;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.26100.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.26100.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+Build on windows-latest	Build	2026-07-29T20:02:13.5454000Z   llvmArm64: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\ARM64\bin
+Build on windows-latest	Build	2026-07-29T20:02:13.5454546Z   llvmX64: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\x64\bin
+Build on windows-latest	Build	2026-07-29T20:02:13.5455009Z   NETFXSDKDir: C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\
+Build on windows-latest	Build	2026-07-29T20:02:13.5470015Z   Path: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\x64\;C:\Program Files (x86)\HTML Help Workshop;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Team Tools\DiagnosticsHub\Collector;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\Extensions\Microsoft\CodeCoverage.Console;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x64;C:\Program Files (x86)\Windows Kits\10\bin\\x64;C:\Program Files\Microsoft Visual Studio\18\Enterprise\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\Tools\;C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\R\R-4.6.1\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.24.13\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.11\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.19-10\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Installer;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\Llvm\x64\bin;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\vcpkg
+Build on windows-latest	Build	2026-07-29T20:02:13.5487845Z   Platform: x64
+Build on windows-latest	Build	2026-07-29T20:02:13.5488035Z   UCRTVersion: 10.0.26100.0
+Build on windows-latest	Build	2026-07-29T20:02:13.5488324Z   UniversalCRTSdkDir: C:\Program Files (x86)\Windows Kits\10\
+Build on windows-latest	Build	2026-07-29T20:02:13.5488755Z   use_x64_llvm: true
+Build on windows-latest	Build	2026-07-29T20:02:13.5489097Z   VCIDEInstallDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\VC\
+Build on windows-latest	Build	2026-07-29T20:02:13.5489607Z   VCINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\
+Build on windows-latest	Build	2026-07-29T20:02:13.5490067Z   VCPKG_ROOT: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\vcpkg
+Build on windows-latest	Build	2026-07-29T20:02:13.5490615Z   VCToolsInstallDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\
+Build on windows-latest	Build	2026-07-29T20:02:13.5491249Z   VCToolsRedistDir: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Redist\MSVC\14.51.36231\
+Build on windows-latest	Build	2026-07-29T20:02:13.5491700Z   VCToolsVersion: 14.51.36231
+Build on windows-latest	Build	2026-07-29T20:02:13.5491927Z   VisualStudioVersion: 18.0
+Build on windows-latest	Build	2026-07-29T20:02:13.5492278Z   VS180COMNTOOLS: C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\Tools\
+Build on windows-latest	Build	2026-07-29T20:02:13.5492669Z   VSCMD_ARG_app_plat: Desktop
+Build on windows-latest	Build	2026-07-29T20:02:13.5492877Z   VSCMD_ARG_HOST_ARCH: x64
+Build on windows-latest	Build	2026-07-29T20:02:13.5493076Z   VSCMD_ARG_TGT_ARCH: x64
+Build on windows-latest	Build	2026-07-29T20:02:13.5493264Z   VSCMD_VER: 18.7.3
+Build on windows-latest	Build	2026-07-29T20:02:13.5493535Z   VSINSTALLDIR: C:\Program Files\Microsoft Visual Studio\18\Enterprise\
+Build on windows-latest	Build	2026-07-29T20:02:13.5493993Z   VSSDK150INSTALL: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK
+Build on windows-latest	Build	2026-07-29T20:02:13.5494461Z   VSSDKINSTALL: C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK
+Build on windows-latest	Build	2026-07-29T20:02:13.5495130Z   WindowsLibPath: C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.26100.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.26100.0
+Build on windows-latest	Build	2026-07-29T20:02:13.5495768Z   WindowsSdkBinPath: C:\Program Files (x86)\Windows Kits\10\bin\
+Build on windows-latest	Build	2026-07-29T20:02:13.5496138Z   WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10\
+Build on windows-latest	Build	2026-07-29T20:02:13.5496430Z   WindowsSDKLibVersion: 10.0.26100.0\
+Build on windows-latest	Build	2026-07-29T20:02:13.5496780Z   WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\
+Build on windows-latest	Build	2026-07-29T20:02:13.5497148Z   WindowsSDKVersion: 10.0.26100.0\
+Build on windows-latest	Build	2026-07-29T20:02:13.5497591Z   WindowsSDK_ExecutablePath_x64: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\x64\
+Build on windows-latest	Build	2026-07-29T20:02:13.5498253Z   WindowsSDK_ExecutablePath_x86: C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\
+Build on windows-latest	Build	2026-07-29T20:02:13.5498699Z   __DOTNET_ADD_64BIT: 1
+Build on windows-latest	Build	2026-07-29T20:02:13.5498899Z   __DOTNET_PREFERRED_BITNESS: 64
+Build on windows-latest	Build	2026-07-29T20:02:13.5508145Z   __VSCMD_PREINIT_PATH: C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\R\R-4.6.1\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.24.13\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.11\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.19-10\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Installer
+Build on windows-latest	Build	2026-07-29T20:02:13.5517479Z ##[endgroup]
+Build on windows-latest	Build	2026-07-29T20:02:13.8077438Z Warning: NMake does not support parallel builds. Ignoring parallel build command line option.
+Build on windows-latest	Build	2026-07-29T20:02:13.9267951Z [  1%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:13.9650744Z context.c
+Build on windows-latest	Build	2026-07-29T20:02:15.8529100Z [  3%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:15.8846734Z init.c
+Build on windows-latest	Build	2026-07-29T20:02:16.1265523Z [  5%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:16.1594607Z input.c
+Build on windows-latest	Build	2026-07-29T20:02:16.4622218Z [  6%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:16.4967736Z monitor.c
+Build on windows-latest	Build	2026-07-29T20:02:16.7144306Z [  8%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:16.7471916Z platform.c
+Build on windows-latest	Build	2026-07-29T20:02:16.9435818Z [ 10%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:16.9766721Z vulkan.c
+Build on windows-latest	Build	2026-07-29T20:02:17.1819082Z [ 11%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:17.2143610Z window.c
+Build on windows-latest	Build	2026-07-29T20:02:17.4462464Z [ 13%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:17.4818700Z egl_context.c
+Build on windows-latest	Build	2026-07-29T20:02:17.7259819Z [ 15%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:17.7582986Z osmesa_context.c
+Build on windows-latest	Build	2026-07-29T20:02:17.9658231Z [ 16%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:17.9989482Z null_init.c
+Build on windows-latest	Build	2026-07-29T20:02:18.2221373Z [ 18%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:18.2550575Z null_monitor.c
+Build on windows-latest	Build	2026-07-29T20:02:18.4577662Z [ 20%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:18.4917258Z null_window.c
+Build on windows-latest	Build	2026-07-29T20:02:18.7093538Z [ 21%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:18.7410312Z null_joystick.c
+Build on windows-latest	Build	2026-07-29T20:02:18.9248465Z [ 23%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:18.9576915Z win32_module.c
+Build on windows-latest	Build	2026-07-29T20:02:19.1472771Z [ 25%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:19.1799599Z win32_time.c
+Build on windows-latest	Build	2026-07-29T20:02:19.3707921Z [ 26%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:19.4046095Z win32_thread.c
+Build on windows-latest	Build	2026-07-29T20:02:19.5933219Z [ 28%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:19.6255437Z win32_init.c
+Build on windows-latest	Build	2026-07-29T20:02:19.8559937Z [ 30%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:19.8889358Z win32_joystick.c
+Build on windows-latest	Build	2026-07-29T20:02:20.1412355Z [ 31%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:20.1740769Z win32_monitor.c
+Build on windows-latest	Build	2026-07-29T20:02:20.6195047Z [ 33%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:20.6525601Z win32_window.c
+Build on windows-latest	Build	2026-07-29T20:02:21.0323014Z [ 35%] Building C object _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:21.0641289Z wgl_context.c
+Build on windows-latest	Build	2026-07-29T20:02:21.3350063Z [ 35%] Built target glfw
+Build on windows-latest	Build	2026-07-29T20:02:21.3868980Z [ 36%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:21.4191871Z raudio.c
+Build on windows-latest	Build	2026-07-29T20:02:26.6874563Z [ 38%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:26.7199691Z rcore.c
+Build on windows-latest	Build	2026-07-29T20:02:28.7683455Z [ 40%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:28.8006845Z rmodels.c
+Build on windows-latest	Build	2026-07-29T20:02:31.9839895Z [ 41%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:32.0169986Z rshapes.c
+Build on windows-latest	Build	2026-07-29T20:02:32.2513553Z [ 43%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:32.2838010Z rtext.c
+Build on windows-latest	Build	2026-07-29T20:02:32.9370482Z [ 45%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:32.9688531Z rtextures.c
+Build on windows-latest	Build	2026-07-29T20:02:35.0152890Z [ 46%] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:35.0477530Z utils.c
+Build on windows-latest	Build	2026-07-29T20:02:35.1439711Z [ 48%] Linking C static library raylib.lib
+Build on windows-latest	Build	2026-07-29T20:02:35.2568357Z [ 48%] Built target raylib
+Build on windows-latest	Build	2026-07-29T20:02:35.3067917Z [ 50%] Building C object CMakeFiles/raygui.dir/src/editor/raygui_impl.c.obj
+Build on windows-latest	Build	2026-07-29T20:02:35.3391619Z raygui_impl.c
+Build on windows-latest	Build	2026-07-29T20:02:35.8503055Z [ 51%] Linking C static library raygui.lib
+Build on windows-latest	Build	2026-07-29T20:02:35.9081151Z [ 51%] Built target raygui
+Build on windows-latest	Build	2026-07-29T20:02:35.9641202Z [ 53%] Building CXX object CMakeFiles/luminus.dir/src/main.cpp.obj
+Build on windows-latest	Build	2026-07-29T20:02:35.9963040Z main.cpp
+Build on windows-latest	Build	2026-07-29T20:02:37.8832683Z D:\a\engine\engine\src\core/SceneManager.h(152): error C2039: 'size': is not a member of 'entt::basic_registry<entt::entity,std::allocator<Entity>>'
+Build on windows-latest	Build	2026-07-29T20:02:37.8833579Z         with
+Build on windows-latest	Build	2026-07-29T20:02:37.8833795Z         [
+Build on windows-latest	Build	2026-07-29T20:02:37.8834011Z             Entity=entt::entity
+Build on windows-latest	Build	2026-07-29T20:02:37.8834273Z         ]
+Build on windows-latest	Build	2026-07-29T20:02:37.8834959Z D:\a\engine\engine\build\_deps\entt-src\src\entt\entity/registry.hpp(233): note: see declaration of 'entt::basic_registry<entt::entity,std::allocator<Entity>>'
+Build on windows-latest	Build	2026-07-29T20:02:37.8835732Z         with
+Build on windows-latest	Build	2026-07-29T20:02:37.8835924Z         [
+Build on windows-latest	Build	2026-07-29T20:02:37.8836120Z             Entity=entt::entity
+Build on windows-latest	Build	2026-07-29T20:02:37.8836368Z         ]
+Build on windows-latest	Build	2026-07-29T20:02:38.1053183Z NMAKE : fatal error U1077: 'C:\hostedtoolcache\windows\cmake\3.22.6\x64\cmake-3.22.6-windows-x86_64\bin\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\luminus.dir\src\main.cpp.obj.d --working-dir=D:\a\engine\engine\build --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\ENTERP~1\VC\Tools\MSVC\1451~1.362\bin\Hostx64\x64\cl.exe @C:\Users\RUNNER~1\AppData\Local\Temp\nm5774.tmp' : return code '0x2'
+Build on windows-latest	Build	2026-07-29T20:02:38.1055625Z Stop.
+Build on windows-latest	Build	2026-07-29T20:02:38.1073800Z NMAKE : fatal error U1077: '"C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\nmake.exe" -s -f CMakeFiles\luminus.dir\build.make /nologo -SL                 CMakeFiles\luminus.dir\build' : return code '0x2'
+Build on windows-latest	Build	2026-07-29T20:02:38.1074995Z Stop.
+Build on windows-latest	Build	2026-07-29T20:02:38.1092500Z NMAKE : fatal error U1077: '"C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\nmake.exe" -s -f CMakeFiles\Makefile2 /nologo -LS                 all' : return code '0x2'
+Build on windows-latest	Build	2026-07-29T20:02:38.1093326Z Stop.
+Build on windows-latest	Build	2026-07-29T20:02:38.2127816Z ##[error]Process completed with exit code 1.
